@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b45e2ea9-6f11-42ad-a721-30866d582d84" name="Default" comment="comienzo registro de huellas">
+      <change beforePath="$PROJECT_DIR$/assets/css/estilo.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/estilo.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/user.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/index/user.tpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/templates/asistencia.tpl" beforeDir="false" afterPath="$PROJECT_DIR$/view/templates/asistencia.tpl" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/templates/empleados.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="17" selection-start-column="12" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/templates/empleadoDetail.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3383">
+              <caret line="199" selection-start-line="199" selection-end-line="214" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/user/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/login.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="488">
+              <caret line="275" column="7" lean-forward="true" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/templates/index.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1122">
+              <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/estilo.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="293" column="45" selection-start-line="293" selection-start-column="45" selection-end-line="293" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/view/templates/asistencia.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2465">
+              <caret line="145" column="32" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index/user.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/user/usuariospordispositivo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/controller/user/empleadoDetail.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="697">
+              <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>tr</find>
+      <find>type=checkbox</find>
+      <find>salio</find>
+      <find>styl</find>
+      <find>fore</find>
+      <find>forea</find>
+      <find>order</find>
+      <find>userInfo</find>
+      <find>card</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/controller/index.php" />
+        <option value="$PROJECT_DIR$/view/templates/asitencia.tpl" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/view/templates/index.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/index.js" />
+        <option value="$PROJECT_DIR$/view/templates/editardepartamento.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/editarhorario.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/departamentos.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/usuarios.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/horarios.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/asistencia.js" />
+        <option value="$PROJECT_DIR$/view/templates/parametros.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/departamentos.js" />
+        <option value="$PROJECT_DIR$/controller/user/usuarios.js" />
+        <option value="$PROJECT_DIR$/controller/user/horarios.js" />
+        <option value="$PROJECT_DIR$/controller/user/editarhorario.js" />
+        <option value="$PROJECT_DIR$/controller/user/editardepartamento.js" />
+        <option value="$PROJECT_DIR$/controller/user/parametros.js" />
+        <option value="$PROJECT_DIR$/view/templates/dispositivos.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/dispositivos.js" />
+        <option value="$PROJECT_DIR$/controller/user/usuariospordispositivo.js" />
+        <option value="$PROJECT_DIR$/view/templates/usuariospordispositivo.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/empleados.js" />
+        <option value="$PROJECT_DIR$/view/templates/empleados.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/empleadoDetail.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/empleadoDetail.js" />
+        <option value="$PROJECT_DIR$/index/user.tpl" />
+        <option value="$PROJECT_DIR$/view/templates/asistencia.tpl" />
+        <option value="$PROJECT_DIR$/controller/user/app.js" />
+        <option value="$PROJECT_DIR$/login.php" />
+        <option value="$PROJECT_DIR$/assets/css/estilo.css" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="605" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="index" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="finca_frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="finca_frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="view" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b45e2ea9-6f11-42ad-a721-30866d582d84" name="Default" comment="" />
+      <created>1548964139233</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1548964139233</updated>
+      <workItem from="1548964142385" duration="1937000" />
+      <workItem from="1548976882864" duration="11000" />
+      <workItem from="1548989031364" duration="1253000" />
+      <workItem from="1549028458770" duration="1982000" />
+      <workItem from="1549031586712" duration="1198000" />
+      <workItem from="1549034276634" duration="109000" />
+      <workItem from="1549034556342" duration="10017000" />
+      <workItem from="1549204194911" duration="1789000" />
+      <workItem from="1549288362459" duration="17701000" />
+      <workItem from="1549378585372" duration="16772000" />
+      <workItem from="1549489890597" duration="103000" />
+      <workItem from="1549546998583" duration="5926000" />
+      <workItem from="1549635529341" duration="17928000" />
+      <workItem from="1549892735863" duration="6012000" />
+      <workItem from="1549979767265" duration="13972000" />
+      <workItem from="1550173387428" duration="723000" />
+      <workItem from="1550497884619" duration="390000" />
+      <workItem from="1550500490149" duration="3265000" />
+      <workItem from="1550587708335" duration="1017000" />
+      <workItem from="1550616075046" duration="806000" />
+      <workItem from="1550625388884" duration="7520000" />
+      <workItem from="1550674971271" duration="22513000" />
+      <workItem from="1550799691341" duration="5498000" />
+      <workItem from="1550845703053" duration="5113000" />
+      <workItem from="1550869448051" duration="634000" />
+      <workItem from="1551109788387" duration="4114000" />
+      <workItem from="1551198164126" duration="2045000" />
+      <workItem from="1551275731449" duration="4264000" />
+      <workItem from="1551307577498" duration="7676000" />
+      <workItem from="1551971426981" duration="2912000" />
+      <workItem from="1553015223993" duration="624000" />
+      <workItem from="1553190141586" duration="31000" />
+      <workItem from="1553376196076" duration="616000" />
+      <workItem from="1553527524688" duration="5365000" />
+      <workItem from="1553613940863" duration="1275000" />
+      <workItem from="1553713323742" duration="73000" />
+      <workItem from="1553721506787" duration="988000" />
+      <workItem from="1553804820238" duration="3619000" />
+      <workItem from="1553821945532" duration="639000" />
+      <workItem from="1554222600219" duration="1933000" />
+      <workItem from="1554408309194" duration="8103000" />
+      <workItem from="1554420293642" duration="474000" />
+      <workItem from="1554476581131" duration="7436000" />
+      <workItem from="1554733223370" duration="4842000" />
+      <workItem from="1554826906339" duration="4812000" />
+      <workItem from="1554986882125" duration="4112000" />
+      <workItem from="1555094906194" duration="648000" />
+      <workItem from="1556051695914" duration="5404000" />
+      <workItem from="1556075551650" duration="2059000" />
+      <workItem from="1556113500223" duration="6064000" />
+      <workItem from="1556146025638" duration="2335000" />
+      <workItem from="1556286621604" duration="707000" />
+      <workItem from="1556827115898" duration="1232000" />
+      <workItem from="1556890828818" duration="599000" />
+      <workItem from="1557065664393" duration="4694000" />
+      <workItem from="1557150219650" duration="1869000" />
+      <workItem from="1557192549746" duration="1982000" />
+      <workItem from="1557248897759" duration="574000" />
+      <workItem from="1557262213319" duration="599000" />
+      <workItem from="1557434511013" duration="168000" />
+    </task>
+    <task id="LOCAL-00001" summary="Cambios index">
+      <created>1548966338605</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1548966338605</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Cambios index">
+      <created>1548966664221</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1548966664221</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Interfaz inicial,&#10;Interfaz inicial reporte,&#10;Lista de empleados registrados.">
+      <created>1549381497693</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1549381497693</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Se agrego los dispositivos por usuario, estos se envian en un array bajo la clave listaDispositivos">
+      <created>1549654682834</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1549654682834</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Agregado el detalle de empleados">
+      <created>1549662392037</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1549662392037</updated>
+    </task>
+    <task id="LOCAL-00006" summary="ajustes de interfaz">
+      <created>1550173423561</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1550173423561</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ajustes de interfaz">
+      <created>1550173794774</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1550173794774</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ajustes de interfaz">
+      <created>1550173973336</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1550173973336</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ajustes de interfaz">
+      <created>1550498132722</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1550498132722</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ajustes de interfaz asistencia">
+      <created>1550500623250</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1550500623250</updated>
+    </task>
+    <task id="LOCAL-00011" summary="ajustes de interfaz asistencia">
+      <created>1550674991343</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1550674991343</updated>
+    </task>
+    <task id="LOCAL-00012" summary="ajustes de interfaz asistencia">
+      <created>1550675228622</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1550675228622</updated>
+    </task>
+    <task id="LOCAL-00013" summary="ajustes de interfaz asistencia">
+      <created>1550675324053</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1550675324053</updated>
+    </task>
+    <task id="LOCAL-00014" summary="ajustes de interfaz asistencia">
+      <created>1550675485181</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1550675485181</updated>
+    </task>
+    <task id="LOCAL-00015" summary="ajustes de interfaz asistencia">
+      <created>1550675510495</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1550675510495</updated>
+    </task>
+    <task id="LOCAL-00016" summary="ajustes interfaz formulario de asistencia">
+      <created>1550762319534</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1550762319534</updated>
+    </task>
+    <task id="LOCAL-00017" summary="agregada la modificación de usuarios">
+      <created>1550764307651</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1550764307651</updated>
+    </task>
+    <task id="LOCAL-00018" summary="reparación de buscadores">
+      <created>1550774726259</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1550774726259</updated>
+    </task>
+    <task id="LOCAL-00019" summary="reparación de buscadores">
+      <created>1550774924680</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1550774924680</updated>
+    </task>
+    <task id="LOCAL-00020" summary="modificación asistencia">
+      <created>1550787132185</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1550787132185</updated>
+    </task>
+    <task id="LOCAL-00021" summary="ajustes para presentación">
+      <created>1550845838707</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1550845838708</updated>
+    </task>
+    <task id="LOCAL-00022" summary="ajustes para presentación">
+      <created>1550847406384</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1550847406384</updated>
+    </task>
+    <task id="LOCAL-00023" summary="ajustes para presentación2">
+      <created>1550851480829</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1550851480829</updated>
+    </task>
+    <task id="LOCAL-00024" summary="modificaciones interfaz (registrar parámetros)">
+      <created>1551370359910</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1551370359910</updated>
+    </task>
+    <task id="LOCAL-00025" summary="modificaciones interfaz (registrar parámetros)">
+      <created>1551386306972</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1551386306972</updated>
+    </task>
+    <task id="LOCAL-00026" summary="usuarios por dispositivo (busqueda por ip)">
+      <created>1553541332114</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1553541332114</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Agregado loader en usuarios por dispositivo">
+      <created>1553811979119</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1553811979119</updated>
+    </task>
+    <task id="LOCAL-00028" summary="modificaciones en usuario por dispositivo&#10;-Agregado las validaciones al registrar un nuevo empleado&#10;-">
+      <created>1554420671006</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1554420671007</updated>
+    </task>
+    <task id="LOCAL-00029" summary="modificaciones interfaz empleado y detailempleado">
+      <created>1554904289931</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1554904289931</updated>
+    </task>
+    <task id="LOCAL-00030" summary="cambios Loader usuariospordispositivo">
+      <created>1556116050359</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1556116050359</updated>
+    </task>
+    <task id="LOCAL-00031" summary="comienzo registro de huellas">
+      <created>1556147107906</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1556147107906</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="239076000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23288591" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.28895184" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49791667" weight="0.3289183" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50208336" side_tool="true" weight="0.3289183" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3286119" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23557048" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.3286119" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.28895184" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49791667" weight="0.3289183" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50208336" side_tool="true" weight="0.3289183" />
+      <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Cambios index" />
+    <MESSAGE value="Interfaz inicial,&#10;Interfaz inicial reporte,&#10;Lista de empleados registrados." />
+    <MESSAGE value="Se agrego los dispositivos por usuario, estos se envian en un array bajo la clave listaDispositivos" />
+    <MESSAGE value="Agregado el detalle de empleados" />
+    <MESSAGE value="ajustes de interfaz" />
+    <MESSAGE value="ajustes de interfaz asistencia" />
+    <MESSAGE value="ajustes interfaz formulario de asistencia" />
+    <MESSAGE value="agregada la modificación de usuarios" />
+    <MESSAGE value="reparación de buscadores" />
+    <MESSAGE value="modificación asistencia" />
+    <MESSAGE value="ajustes para presentación" />
+    <MESSAGE value="ajustes para presentación2" />
+    <MESSAGE value="usuarios por dispositivo (busqueda por ip)" />
+    <MESSAGE value="modificaciones interfaz (registrar parámetros)" />
+    <MESSAGE value="Agregado loader en usuarios por dispositivo" />
+    <MESSAGE value="modificaciones en usuario por dispositivo&#10;-Agregado las validaciones al registrar un nuevo empleado&#10;-" />
+    <MESSAGE value="modificaciones interfaz empleado y detailempleado" />
+    <MESSAGE value="cambios Loader usuariospordispositivo" />
+    <MESSAGE value="comienzo registro de huellas" />
+    <option name="LAST_COMMIT_MESSAGE" value="comienzo registro de huellas" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/controller/user/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/index.tpl" />
+    <entry file="file://$PROJECT_DIR$/assets/css/estiloFile.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="35" />
+          <folding>
+            <marker date="1549893555423" expanded="true" signature="706:716" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/editardepartamento.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1173">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/editarhorario.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/departamentos.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1649">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/horarios.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3179">
+          <caret line="187" column="35" selection-start-line="187" selection-start-column="35" selection-end-line="187" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/parametros.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2346">
+          <caret line="138" column="35" lean-forward="true" selection-start-line="138" selection-start-column="35" selection-end-line="138" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/usuarios.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4573">
+          <caret line="269" column="79" selection-start-line="242" selection-start-column="16" selection-end-line="269" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/departamentos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/parametros.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="39" selection-start-line="41" selection-start-column="39" selection-end-line="41" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/editardepartamento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="55" column="35" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../biotrackcmd-php/ejemplo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" lean-forward="true" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/dispositivos.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2074">
+          <caret line="122" column="77" selection-start-line="122" selection-start-column="77" selection-end-line="122" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/editarhorario.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="196" column="36" selection-start-line="196" selection-start-column="36" selection-end-line="196" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/horarios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="101" column="40" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/usuarios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="95" column="21" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
+          <folding>
+            <marker date="1553555280280" expanded="true" signature="1285:1305" ph="{...}" />
+            <marker date="1553555280280" expanded="true" signature="3001:3073" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/asistencia.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="378" column="85" selection-start-line="378" selection-start-column="8" selection-end-line="378" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/empleados.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/usuariospordispositivo.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="51" column="30" selection-start-line="51" selection-start-column="30" selection-end-line="51" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/dispositivos.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/empleados.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="12" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/empleadoDetail.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3383">
+          <caret line="199" selection-start-line="199" selection-end-line="214" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/index.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1122">
+          <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/view/templates/asistencia.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2465">
+          <caret line="145" column="32" selection-start-line="145" selection-start-column="32" selection-end-line="145" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index/user.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="83" selection-start-line="41" selection-start-column="83" selection-end-line="41" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/usuariospordispositivo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/empleadoDetail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="31" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/estilo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="293" column="45" selection-start-line="293" selection-start-column="45" selection-end-line="293" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controller/user/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="275" column="7" lean-forward="true" selection-start-line="275" selection-start-column="7" selection-end-line="275" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

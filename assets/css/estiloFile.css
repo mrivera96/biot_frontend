@@ -1,0 +1,28 @@
+.editable{ 
+    background:#ADDFD7;
+}
+
+.file_input_div {
+  margin-bottom: 45px;
+  margin-top:15px;
+  height: 40px;
+}
+
+.file_input {
+  float: left;
+}
+
+#file_input_text_div {
+  width: auto;
+  height: 40px;
+  margin-top: -8px;
+  margin-left: 45px;
+
+}
+#file_input_text{
+    height: 40px;
+}
+
+.none {
+  display: none;
+}
