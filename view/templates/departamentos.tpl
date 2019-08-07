@@ -90,7 +90,7 @@
                     </thead>
                     <tbody>
                         <tr ng-click="editardepartamento(e.IdDepartment)"
-                            ng-repeat="e in departamentos | filter : filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize" ng-if="deptsUsr[e.IdDepartment]==true || IdUsr==1">
+                            ng-repeat="e in departamentos | filter : filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize" >
                             <td>{{$index + 1}}</td>
                             <td>{{ e.Description }}</td>
                         </tr>

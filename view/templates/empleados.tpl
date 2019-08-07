@@ -207,7 +207,7 @@
                         <th>Activo</th>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="e in empleados | filter: filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize" ng-if="deptsUsr[e.IdDepartment]==true || IdUsr==1" ng-click="verDetail(e.IdUser, e.Description)">
+                        <tr ng-repeat="e in empleados | filter: filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize"  ng-click="verDetail(e.IdUser, e.Description)">
                             <td>{{$index + 1}}</td>
                             <td>{{ e.IdUser }}</td>
                             <td style="padding-left:85px;">{{ e.Name }}</td>

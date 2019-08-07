@@ -122,7 +122,7 @@
                     <th ng-if="permissions.opdoor==true">Control de Puerta</th>
                 </thead>
                 <tbody>
-                    <tr ng-click="pordispositivo(e.IdDevice, e.IP, e.Type)" ng-repeat="e in dispositivos | filter : filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize" ng-if="doors[e.IdDevice]==true || IdUsr==1">
+                    <tr ng-click="pordispositivo(e.IdDevice, e.IP, e.Type)" ng-repeat="e in dispositivos | filter : filters.search | startFromGrid: currentPage * pageSize | limitTo: pageSize">
                         <td>{{$index + 1}}</td>
                         <td style="padding-left:85px;">{{ e.MachineNumber }}</td>
                         <td>{{ e.Description }}</td>

@@ -8,7 +8,7 @@
             <div class="columna-12" ng-if="cargar" style="text-align:center;">
                 <img src="./assets/img/7YUz.gif" />
             </div>
-            <form name="upload" novalidate>
+            <form name="upload" novalidate ng-if="!cargar">
                 <div class="columna-12">
                     <div class="columna-6">
                         <div class="form-grupo form-texto-animado" style="margin-bottom: 15px">
@@ -239,7 +239,7 @@
             <div class="columna-12" ng-if="cargar" style="text-align:center;">
                 <img src="./assets/img/7YUz.gif" />
             </div>
-            <div class="columna-12">
+            <div class="columna-12" ng-if="!cargar">
                 <table class="tabla print" ng-if="currUsr.devices.length">
                     <thead style="text-align:center">
                         <th ng-click="orderByMe('cuenta')">#</th>
@@ -275,9 +275,7 @@
         </div>
     
         <div class="card-contenido tabla-responsive permisos">
-            <div class="columna-12" ng-if="cargar" style="text-align:center;">
-                <img src="./assets/img/7YUz.gif" />
-            </div>
+            
             <div class="columna-12">
                 <div class="columna-6">
                     <div class="custom-control custom-checkbox">
@@ -432,13 +430,13 @@
     
         <div class="card-contenido tabla-responsive">
             
-                <div class="columna-12" style="text-align:center" ng-if="carga">
+                <div class="columna-12" style="text-align:center" ng-if="cargar">
 
                     <img src="./assets/img/7YUz.gif" />
 
                 </div>
 
-                <table class="tabla print" ng-if="currUsr.departments.length">
+                <table class="tabla print" ng-if="currUsr.departments.length" ng-if="!cargar">
                     <thead style="text-align:center">
                         <th ng-click="orderByMe('cuenta')">N#</th>
                         <th>Id de Departamento</th>
@@ -459,7 +457,7 @@
                     </tbody>
                 </table>
                
-                <h3 ng-show="!currUsr.departments.length ">No hay departamentos registrados</h3>
+                <h3 ng-show="!currUsr.departments.length && !cargar">No hay departamentos registrados</h3>
             </div>
 </div>
 

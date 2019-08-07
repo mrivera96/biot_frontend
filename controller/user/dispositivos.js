@@ -28,13 +28,7 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
         $location.path('usuariospordispositivo');      
     }
 
-    $scope.getDoorPer=function(MN){
-        
-        /*if($rootScope.doors["'"+MN+"'"]==1)
-            return true*/
-            console.log(MN);
-        
-    }
+    
     $scope.openDoor=function openDoor(Type, IP){
         $scope.carga = true;
         if(Type=="11"){
@@ -124,8 +118,6 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
     }
 
      $scope.creardispositivo=function(dataForm) {
-
-        
 
         $http({
             method: "POST",

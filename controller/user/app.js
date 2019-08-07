@@ -4,8 +4,7 @@ app.run(function($rootScope, $http) {
 	$rootScope.titulo = "Inicio";
 	$rootScope.token = '<?php echo $_SESSION["token"];?>';
 	$rootScope.IdUsr = '<?php echo $_SESSION["id_usr"];?>';
-	$rootScope.doors={};
-	$rootScope.deptsUsr={};
+	
 	$http({
         method: "POST",
         url: $rootScope.ipServer+"/public/api/verpermisos",
@@ -26,46 +25,9 @@ app.run(function($rootScope, $http) {
         }
 	);
 
-	$http({
-        method: "POST",
-        url: $rootScope.ipServer+"/public/api/verpermisosdoor",
-        data: $.param({'id_user':$rootScope.IdUsr}),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-            'Accept':'application/json',
-            'Authorization':'Bearer '+$rootScope.token
-        }
-    }).then(
-        function success(response) {
-			angular.forEach(response.data.puertas,function(value,key){
-				$rootScope.doors[value.Id_Device]=true;
-			});	
-        },
-        function error(response) {
-            alert('Se produjo un error al cargar las puertas del usuario');
-        }
-	);
+	
 
-	$http({
-        method: "POST",
-        url: $rootScope.ipServer+"/public/api/verdepartments",
-        data: $.param({'id_user':$rootScope.IdUsr}),
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-            'Accept':'application/json',
-            'Authorization':'Bearer '+$rootScope.token
-        }
-    }).then(
-        function success(response) {
-			angular.forEach(response.data.departamentos,function(value,key){
-				$rootScope.deptsUsr[value.Id_department]=true;
-			});	
-			console.log($rootScope.deptsUsr);
-        },
-        function error(response) {
-            alert('Se produjo un error al cargar los departamentos del usuario');
-        }
-	);
+	
 	
 	$('.side-bar ul li').click(function(){	
 		$('.side-bar ul li').removeClass('activo');	

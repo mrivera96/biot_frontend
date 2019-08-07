@@ -4,7 +4,7 @@ app.controller('permisosusuarios', function ($scope, $rootScope, $http, $locatio
         'id_user': $rootScope.idUser
     };
     $rootScope.titulo = "Detalle de Usuario";
-    $scope.cargar = false;
+    $scope.cargar = true;
 
     $scope.tempDevArray = [];
     $scope.tempDeptArray = [];
@@ -80,9 +80,11 @@ loadData();
     }).then(
         function success(response) {
             $scope.departamentos = response.data.respuesta;
+            
         },
         function error(response) {
             alert('Error al cargar los departamentos');
+            
         }
     );
 
