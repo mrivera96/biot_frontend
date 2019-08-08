@@ -630,27 +630,6 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
         }
     }
 
-     var mystyle = {
-        sheetid: 'My Big Table Sheet',
-        headers: true,
-        caption: {
-            title: 'Reporte de asistencia',
-            style: 'font-size: 50px; color:blue;' // Sorry, styles do not works
-        },
-        style: '',
-        column: {
-            style: 'font-size:30px'
-        },
-        columns: [
-            {columnid: 'nombre', title: 'Nombre', style:'background:#00FF00'},
-            {columnid: 'departamento', title: 'Departamento', width: 300},
-            {columnid: 'fecha_y_hora_marco_min', title: 'Hora marcó (entrada)'},
-            {columnid: 'fecha_y_hora_marco_max', title: 'Hora marcó (salida)'},
-            {columnid: 'fecha', title: 'Fecha'},
-            {columnid: 'dia', title: 'Día'},
-            {columnid: 'asis', title: '¿Llegó tarde?'}
-        ],
-    };
 
     $scope.exportData = function () {
         var dateObj = new Date($scope.asistencia["fechaF"]);

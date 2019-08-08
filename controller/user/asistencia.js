@@ -1,4 +1,4 @@
-app.controller('asistencia', function ($scope, $rootScope, $http, $location, $filter) {
+app.controller('asistencia', function($scope, $rootScope, $http, $location, $filter) {
 
     $rootScope.token = '<?php echo $_SESSION["token"];?>'
     $rootScope.titulo = "Reportes de asistencia";
@@ -34,7 +34,7 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
         }
     );
 
-    $scope.mostrar = function (paramAsisten) {
+    $scope.mostrar = function(paramAsisten) {
         $scope.carga = true;
         $scope.ver = true;
         $scope.tarde = 0;
@@ -77,7 +77,7 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
                 }
             }).then(
                 function success(response) {
-                   
+
                     var reporte = response.data.respuesta;
 
                     for (var i = 0; i < reporte.length; i++) {
@@ -92,7 +92,7 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
                         var meo = reporte[i].minutos_entrada;
                         var hem = reporte[i].fecha_y_hora_marco_min.substring(0, 2);
                         var mem = reporte[i].fecha_y_hora_marco_min.substring(3, 5);
-                        reporte[i].calculo = calculoMarcadoAtrasado(heo, meo, hem, mem);
+                        
 
                         /**
                          * Abreviaturas
@@ -106,11 +106,6 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
                         var hsm = reporte[i].fecha_y_hora_marco_max.substring(0, 2);
                         var msm = reporte[i].fecha_y_hora_marco_max.substring(3, 5);
 
-                        if (calculoMarcadoAdelantado(hsm, msm, hso, mso).substring(0, 1) == '-') {
-                            reporte[i].salioantes = calculoMarcadoAdelantado(hsm, msm, hso, mso);
-                        } else {
-                            reporte[i].salioantes = 'Salida correcta';
-                        }
 
                         var fechaMenor = new Date();
                         var fechaMayor = new Date();
@@ -122,9 +117,6 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
                         } else {
                             reporte[i].extras = 0;
                         }
-
-                        reporte[i].hreales = calculoHorasReales(hsm, msm, hem, mem);
-
 
                         var resta = (fechaMayor - fechaMenor);
 
@@ -145,6 +137,7 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
                     }
 
                     $rootScope.reporte = reporte;
+                    $rootScope.pagination($rootScope.reporte.length, 50);
                     $scope.carga = false;
 
                     /*$scope.tama = $rootScope.reporte.length;
@@ -252,225 +245,6 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
     }
 
 
-    function calculoHorasReales(hsm, msm, hem, mem) {
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        var fdesa = new Date();
-        var fdesa1 = new Date();
-        var falm = new Date();
-        var falm1 = new Date();
-
-        fdesa1.setHours(8, 35);
-        fdesa.setHours(8, 00);
-
-        falm1.setHours(12, 45);
-        falm.setHours(12, 00);
-
-        fechaMayor.setHours(hsm, msm, 00, 000);
-        fechaMenor.setHours(hem, mem, 00, 000);
-
-        var resta = (fechaMayor - fechaMenor) - (fdesa1 - fdesa) - (falm1 - falm);
-
-        var ms = resta % 1000;
-        resta = (resta - ms) / 1000;
-
-        var secs = resta % 60;
-        resta = (resta - secs) / 60;
-
-        var mins = resta % 60;
-
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs >= 0 && hrs < 10) {
-            horas = "0" + hrs;
-        } else
-            horas = hrs;
-
-        if (mins >= 0 && mins < 10) {
-            minutos = "0" + mins;
-        } else
-            minutos = mins;
-
-        if (secs >= 0 && secs < 10) {
-            segundos = "0" + secs;
-        } else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas + ":" + minutos + ":" + segundos;
-
-        var horasReales;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio = "";
-            horasReales = "-" + tiempo.replace(menos, porVacio);
-        } else
-            horasReales = tiempo;
-
-        var horasRealesSalida;
-        if (horasReales.includes("-")) {
-            horasRealesSalida = 0;
-        } else {
-            horasRealesSalida = horasReales.substring(1, 2) + " horas " + horasReales.substring(3, 5) + " minutos";
-        }
-        return horasRealesSalida;
-
-    }
-
-    function calculoMarcadoAtrasado(hem, mem, hsm, msm) {
-
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        fechaMayor.setHours(hem, mem, 00, 000);
-        fechaMenor.setHours(hsm, msm, 00, 000);
-
-        var resta = (fechaMayor - fechaMenor);
-
-        var ms = resta % 1000;
-        resta = (resta - ms) / 1000;
-
-        var secs = resta % 60;
-        resta = (resta - secs) / 60;
-
-        var mins = resta % 60;
-
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs >= 0 && hrs < 10) {
-            horas = "0" + hrs;
-        } else
-            horas = hrs;
-
-        if (mins >= 0 && mins < 10) {
-            minutos = "0" + mins;
-        } else
-            minutos = mins;
-
-        if (secs >= 0 && secs < 10) {
-            segundos = "0" + secs;
-        } else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas + ":" + minutos + ":" + segundos;
-
-        var horaRetraso;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio = "";
-            horaRetraso = "-" + tiempo.replace(menos, porVacio);
-        } else
-            horaRetraso = tiempo;
-
-        return horaRetraso;
-
-        /*var horas, minutos, segundos;
-        if (hrs>=0 && hrs<10){
-            horas = "0"+ hrs;
-        }else if (hrs > (-10) && hrs < (0)) {
-            var menos = "-";
-            var porCero    = "-0";
-            var hrsReplace = hrs+"";
-            horas = hrsReplace.replace(menos, porCero);
-        }else
-            horas = hrs;
-
-        if (mins>=0 && mins<10){
-            minutos = "0"+ mins;
-        }else if (mins > (-10) && mins < (0)){
-            var menos = "-";
-            var porCero    = "0";
-            var minsReplace = mins+"";
-            minutos = minsReplace.replace(menos, porCero);
-        }else
-            minutos = mins;
-
-        if (secs>=0 && secs<10){
-            segundos = "0"+ secs;
-        }else if (secs > (-10) && secs < (0)) {
-            var menos = "-";
-            var porCero    = "0";
-            var secsReplace = secs+"";
-            segundos = secsReplace.replace(menos, porCero);
-        }else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas+":"+minutos+":"+segundos;
-
-        var horaRetraso;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio    = "";
-            horaRetraso = "-" + tiempo.replace(menos, porVacio);
-        }else
-            horaRetraso = tiempo;*/
-    }
-
-    /**
-     * Abreviaturas
-     * hso = hora salida oficial
-     * mso = minutos salida oficial
-     * hsm = hora salida marcado
-     * msm = minutos salida marcado
-     */
-    function calculoMarcadoAdelantado(hsm, msm, hso, mso) {
-
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        fechaMayor.setHours(hsm, msm, 00, 000);
-        fechaMenor.setHours(hso, mso, 00, 000);
-
-        var resta = (fechaMayor - fechaMenor);
-
-        if (resta < 0) {
-            if ((resta * -1) > 300000) {
-
-            }
-        }
-
-        var ms = resta % 1000;
-        resta = (resta - ms) / 1000;
-
-        var secs = resta % 60;
-        resta = (resta - secs) / 60;
-
-        var mins = resta % 60;
-
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs >= 0 && hrs < 10) {
-            horas = "0" + hrs;
-        } else
-            horas = hrs;
-
-        if (mins >= 0 && mins < 10) {
-            minutos = "0" + mins;
-        } else
-            minutos = mins;
-
-        if (secs >= 0 && secs < 10) {
-            segundos = "0" + secs;
-        } else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas + ":" + minutos + ":" + segundos;
-
-        var horaAdelantada;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio = "";
-            horaAdelantada = "-" + tiempo.replace(menos, porVacio);
-        } else
-            horaAdelantada = tiempo;
-
-        return horaAdelantada;
-    }
-
     var mystyle = {
         sheetid: 'My Big Table Sheet',
         headers: true,
@@ -493,7 +267,12 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
         ],
     };
 
-    $scope.exportData = function () {
+    $scope.filterData = function(data) {
+        tama = $filter('filter')($rootScope.reporte, data);
+        $rootScope.pagination(tama.length, 50);
+    };
+
+    $scope.exportData = function() {
         var dateObj = new Date($scope.asistencia["fechaF"]);
         var month = dateObj.getUTCMonth() + 1; //months from 1-12
         var day = dateObj.getUTCDate();
@@ -544,5 +323,5 @@ app.controller('asistencia', function ($scope, $rootScope, $http, $location, $fi
         alasql('SELECT * INTO XLS("Reporte asistencia.xls",?) FROM ?', [mystyle, $scope.result]);
     };
 
-    
+
 });

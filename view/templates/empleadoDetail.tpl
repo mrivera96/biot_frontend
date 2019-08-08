@@ -331,7 +331,8 @@
                                 <th>Fecha</th>
                                 <th>Día</th>
                                 <th>¿Llegó tarde?</th>
-                                <th>Horas trabajadas al día</th>
+                                <th>Horas teóricas trabajadas al día</th>
+                                <th>Horas reales trabajadas al día</th>
                                 <th>Salida</th>
                                 <th>Horas Extra</th>
                             </thead>
@@ -355,6 +356,9 @@
                                     <td>{{ r.fecha }}</td>
                                     <td>{{ r.dia }}</td>
                                     <td>{{ r.asis }}</td>
+                                    <td ng-if="r.fecha_y_hora_marco_min == r.fecha_y_hora_marco_max">0 horas 0
+                                        minutos</td>
+                                    <td>{{r.horastrabajadassincomer}}</td>
                                     <td ng-if="r.fecha_y_hora_marco_min == r.fecha_y_hora_marco_max">0 horas 0
                                         minutos</td>
                                     <td ng-if="r.fecha_y_hora_marco_min != r.fecha_y_hora_marco_max">
