@@ -77,104 +77,16 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                 }
             }).then(
                 function success(response) {
-
-                    var reporte = response.data.respuesta;
-
-                    for (var i = 0; i < reporte.length; i++) {
-                        /**
-                         * Abreviaturas
-                         * heo = hora entrada oficial
-                         * meo = minutos entrada oficial
-                         * hem = hora entrada marcado
-                         * mem = minutos entrada marcado
-                         */
-                        var heo = reporte[i].hora_entrada;
-                        var meo = reporte[i].minutos_entrada;
-                        var hem = reporte[i].fecha_y_hora_marco_min.substring(0, 2);
-                        var mem = reporte[i].fecha_y_hora_marco_min.substring(3, 5);
-                        
-
-                        /**
-                         * Abreviaturas
-                         * hso = hora salida oficial
-                         * mso = minutos salida oficial
-                         * hsm = hora salida marcado
-                         * msm = minutos salida marcado
-                         */
-                        var hso = reporte[i].hora_salida;
-                        var mso = reporte[i].minutos_salida;
-                        var hsm = reporte[i].fecha_y_hora_marco_max.substring(0, 2);
-                        var msm = reporte[i].fecha_y_hora_marco_max.substring(3, 5);
-
-
-                        var fechaMenor = new Date();
-                        var fechaMayor = new Date();
-
-                        fechaMayor.setHours(heo, meo, 00, 000);
-                        fechaMenor.setHours(hem, mem, 00, 000);
-                        if (hsm > hso) {
-                            reporte[i].extras = calculoHorasExtrasSalida(hsm, msm, hso, mso);
-                        } else {
-                            reporte[i].extras = 0;
+                    $rootScope.reporte =  response.data.respuesta;
+                    $scope.tarde=0;
+                    for(var i=0;i<$rootScope.reporte.length;i++){
+                        if($rootScope.reporte[i].asis==="SÍ"){
+                            $scope.tarde+=1;
                         }
-
-                        var resta = (fechaMayor - fechaMenor);
-
-                        if (resta < 0) {
-                            if ((resta * -1) > 300000) {
-                                reporte[i].asis = 'Sí';
-                                $scope.tarde += 1;
-                            } else {
-                                reporte[i].asis = 'No';
-                            }
-                        } else {
-                            reporte[i].asis = 'No';
-                        }
-
-                        reporte[i].horaEntraExcel = reporte[i].hora_entrada + ":" + reporte[i].minutos_entrada
-                        reporte[i].horaSaliExcel = reporte[i].hora_salida + ":" + reporte[i].minutos_salida
-
                     }
 
-                    $rootScope.reporte = reporte;
                     $rootScope.pagination($rootScope.reporte.length, 50);
                     $scope.carga = false;
-
-                    /*$scope.tama = $rootScope.reporte.length;
-                    $scope.currentPage = 0; 
-                    $scope.pageSize = 50; 
-                    $scope.pages = [];
-                    $scope.pages.length = 0;
-                    
-                    var ini = $scope.currentPage - 4;
-                    var fin = $scope.currentPage + 5;
-                    if (ini < 1) {
-                        ini = 1;
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        /*if (Math.ceil($scope.tama/$scope.pageSize) > 6)
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        else
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                    } else {
-                        if (ini >= Math.ceil($scope.tama/$scope.pageSize) - 50) {
-                        ini = Math.ceil($scope.tama/$scope.pageSize) - 50;
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        }
-                    }
-                    if (ini < 1) ini = 1;
-                    for (var i = ini; i <= fin; i++) {
-                        $scope.pages.push({
-                        no: i
-                        });
-                    }
-            
-                    if ($scope.currentPage >= $scope.pages.length)
-                        $scope.currentPage = $scope.pages.length - 1;
-                    
-            
-                    $scope.setPage = function(index) {
-                    $scope.currentPage = index - 1;
-                    };*/
 
                 },
                 function error(response) {
@@ -188,84 +100,8 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
         }
     }
 
-    /**
-     * Abreviaturas
-     * hem = hora entrada marcar
-     * mem = minutos entrada marcar
-     * hsm = hora salida marcar
-     * msm = minutos salida marcar
-     */
-    function calculoHorasExtrasSalida(hsm, msm, hso, mso) {
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        fechaMayor.setHours(hsm, msm, 00, 000);
-        fechaMenor.setHours(hso, mso, 00, 000);
-
-        var resta = (fechaMayor - fechaMenor);
-
-        var ms = resta % 1000;
-        resta = (resta - ms) / 1000;
-
-        var secs = resta % 60;
-        resta = (resta - secs) / 60;
-
-        var mins = resta % 60;
-
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs >= 0 && hrs < 10) {
-            horas = "0" + hrs;
-        } else
-            horas = hrs;
-
-        if (mins >= 0 && mins < 10) {
-            minutos = "0" + mins;
-        } else
-            minutos = mins;
-
-        if (secs >= 0 && secs < 10) {
-            segundos = "0" + secs;
-        } else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas + ":" + minutos + ":" + segundos;
-
-        var horasEstras;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio = "";
-            horasExtras = "-" + tiempo.replace(menos, porVacio);
-        } else
-            horasExtras = tiempo;
-
-        return horasExtras;
-
-    }
 
 
-    var mystyle = {
-        sheetid: 'My Big Table Sheet',
-        headers: true,
-        caption: {
-            title: 'Reporte de asistencia',
-            style: 'font-size: 50px; color:blue;' // Sorry, styles do not works
-        },
-        style: '',
-        column: {
-            style: 'font-size:30px'
-        },
-        columns: [
-            { columnid: 'nombre', title: 'Nombre', style: 'background:#00FF00' },
-            { columnid: 'departamento', title: 'Departamento', width: 300 },
-            { columnid: 'fecha_y_hora_marco_min', title: 'Hora marcó (entrada)' },
-            { columnid: 'fecha_y_hora_marco_max', title: 'Hora marcó (salida)' },
-            { columnid: 'fecha', title: 'Fecha' },
-            { columnid: 'dia', title: 'Día' },
-            { columnid: 'asis', title: '¿Llegó tarde?' }
-        ],
-    };
 
     $scope.filterData = function(data) {
         tama = $filter('filter')($rootScope.reporte, data);
