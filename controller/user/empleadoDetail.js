@@ -6,7 +6,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
     $rootScope.titulo = "Detalle de Empleado";
     $rootScope.deviceList = 0
-    
+
     $scope.empleado ={};
     $scope.product = {};
     $rootScope.tempProduct = [];
@@ -16,7 +16,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
     $scope.carga2 = true;
     $scope.carga3 = false;
     $scope.rango = true;
-
+    $rootScope.noreg=false;
     $scope.filters = {};
     $scope.filters.search = "";
 
@@ -55,7 +55,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             'Type':type
 
         };
-    
+
 
         if (confirm('¿Desea eliminar este dispositivo?')){
             $http({
@@ -73,9 +73,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                     deviceList();
                 },
                 function error(response) {
-                    
+
                     alert('Error al eliminar el dispositivo');
-                    
+
                 }
             );
         }
@@ -161,21 +161,21 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 $rootScope.deviceList = response.data.respuesta;
                 $rootScope.tieneHuellas = response.data.tieneHuellas;
                 $scope.carga2 = false;
-   
+
             },
             function error(response) {
                 $scope.carga2 = false;
                 alert(response.data.respuesta);
-                
+
             }
         );
     }
 
     $scope.agregarDispositivo = function(){
-        
+
         var conta = 0;
         var conta2 = 0;
-        
+
         angular.forEach($rootScope.tempProduct, function(value, key) {
             if (value.IdDevice == $scope.empleado['IdDispositivo']) {
                 conta += 1;
@@ -191,15 +191,15 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
         if (conta == 0) {
             if(!Array.isArray($rootScope.tieneHuellas) && $scope.deviceList != 0){
-                
+
                 alert('Sin huellas dactilares, no puede agregar otro dispositivo');
-                
+
             }else if(!Array.isArray($rootScope.tieneHuellas) && $rootScope.tempProduct != 0){
 
                 alert('Sin huellas dactilares, no puede agregar otro dispositivo');
 
             }else if  (!Array.isArray($rootScope.tieneHuellas) && $scope.deviceList == 0){
-                
+
                 if (conta2 == 0){
                     angular.forEach($rootScope.dispositivos, function(value, key){
                         if(value.IdDevice == $scope.empleado['IdDispositivo']){
@@ -216,13 +216,13 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                             };
                             $rootScope.tempProduct.push($scope.product);
                             $scope.product = {};
-                            
+
                         }
                     });
 
-                    
+
                 }
-                
+
             }else if(Array.isArray($rootScope.tieneHuellas) && $scope.deviceList != 0){
                 if (conta2 == 0){
                     angular.forEach($rootScope.dispositivos, function(value, key){
@@ -240,10 +240,10 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                             };
                             $rootScope.tempProduct.push($scope.product);
                             $scope.product = {};
-                            
+
                         }
                     });
-                    
+
                 } else {
                     alert('Ya tiene asignado este dispositivo')
                 }
@@ -264,17 +264,17 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                             };
                             $rootScope.tempProduct.push($scope.product);
                             $scope.product = {};
-                            
+
                         }
                     });
-                    
+
                 }
-            }    
-           
+            }
+
         }else {
             alert('Este dispositivo ya esta agregado a la lista')
         }
-        
+
     }
 
     $scope.deleteMate = function(i){
@@ -287,66 +287,66 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
         }else if($rootScope.tieneHuellas[0] == "No"){
             alert('Se requiere que el usuario tenga por lo menos 1 huella registrada.');
         }else{*/
-            $scope.carga3 = true;
-            var dateObj = new Date(userInfo["Birthday"]);
-            var month = dateObj.getUTCMonth() + 1; //months from 1-12
-            var day = dateObj.getUTCDate();
-            var year = dateObj.getUTCFullYear();
-            var hora = dateObj.getHours()
-            var minuto = dateObj.getMinutes()
-            var segundo = dateObj.getSeconds()
+        $scope.carga3 = true;
+        var dateObj = new Date(userInfo["Birthday"]);
+        var month = dateObj.getUTCMonth() + 1; //months from 1-12
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+        var hora = dateObj.getHours()
+        var minuto = dateObj.getMinutes()
+        var segundo = dateObj.getSeconds()
 
-            userInfo['Birthday'] = year + "-" + month + "-" + day + " " + hora + ":" + minuto + ":" + segundo;
-            userInfo['listaDispositivos'] = $rootScope.tempProduct;
+        userInfo['Birthday'] = year + "-" + month + "-" + day + " " + hora + ":" + minuto + ":" + segundo;
+        userInfo['listaDispositivos'] = $rootScope.tempProduct;
 
-            angular.forEach($rootScope.tieneHuellas, function(value, key){
-                $rootScope.fingers[value.FingerNumber]=value.FingerPrint;
-            });
-            
-            userInfo['fingerprints'] = $rootScope.fingers;
-            
+        angular.forEach($rootScope.tieneHuellas, function(value, key){
+            $rootScope.fingers[value.FingerNumber]=value.FingerPrint;
+        });
 
-            $scope.carga = false;
+        userInfo['fingerprints'] = $rootScope.fingers;
 
-            $http({
-                method: "POST",
-                url: $rootScope.ipServer+"/public/api/editarusuario",
-                data: $.param(userInfo),
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
-                    'Accept':'application/json',
-                    'Authorization':'Bearer '+$rootScope.token
-                }
-            }).then(
-                function success(response) {
-                    $scope.carga = true;
-                    $scope.carga3 = false;
-                   
-                    alert(''+response.data.respuesta);
-                    $rootScope.tempProduct = []
-                        $rootScope.fingers = [
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            "",
-                            ""];
-                    deviceList();
-                },
-                function error(response) {
-                    $scope.carga3 = false;
-                 
-                    alert('Error al modificar el usuario');
-                }
-            );
+
+        $scope.carga = false;
+
+        $http({
+            method: "POST",
+            url: $rootScope.ipServer+"/public/api/editarusuario",
+            data: $.param(userInfo),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                'Accept':'application/json',
+                'Authorization':'Bearer '+$rootScope.token
+            }
+        }).then(
+            function success(response) {
+                $scope.carga = true;
+                $scope.carga3 = false;
+
+                alert(''+response.data.respuesta);
+                $rootScope.tempProduct = []
+                $rootScope.fingers = [
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    ""];
+                deviceList();
+            },
+            function error(response) {
+                $scope.carga3 = false;
+
+                alert('Error al modificar el usuario');
+            }
+        );
         //}
     }
 
-     $scope.mostrar = function (paramAsisten) {
+    $scope.mostrar = function (paramAsisten) {
         $scope.carga = true;
         $scope.ver = true;
         $scope.tarde = 0;
@@ -361,13 +361,13 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
         var month1 = dateObj1.getUTCMonth() + 1; //months from 1-12
         var day1 = dateObj1.getUTCDate();
         var year1 = dateObj1.getUTCFullYear();
-        var numDia1 = dateObj1.getUTCDay(); 
+        var numDia1 = dateObj1.getUTCDay();
 
         mostrar = year + "-" + month + "-" + day;
         mostrar1 = year1 + "-" + month1 + "-" + day1;
 
         if (paramAsisten['tipo']){
-            paramAsisten['fecha'] = mostrar1+","+mostrar;
+            paramAsisten['fecha'] = mostrar+","+mostrar1;
 
         } else {
             paramAsisten['fecha'] = mostrar;
@@ -375,7 +375,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
         fecha = paramAsisten['fecha'];
 
-        
+
 
         $http({
             method: "POST",
@@ -388,247 +388,61 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             }
         }).then(
             function success(response) {
-                var reporte = response.data.respuesta;
-                if (reporte) {
-                    for (var i = 0; i < reporte.length; i++) {
-                        /**
-                         * Abreviaturas
-                         * heo = hora entrada oficial
-                         * meo = minutos entrada oficial
-                         * hem = hora entrada marcado
-                         * mem = minutos entrada marcado
-                         */
-                        var heo = reporte[i].hora_entrada;
-                        var meo = reporte[i].minutos_entrada;
-                        var hem = reporte[i].fecha_y_hora_marco_min.substring(0, 2);
-                        var mem = reporte[i].fecha_y_hora_marco_min.substring(3, 5);
-                        reporte[i].calculo = calculoMarcadoAtrasado(heo,meo,hem,mem);
-
-                        /**
-                         * Abreviaturas
-                         * hso = hora salida oficial
-                         * mso = minutos salida oficial
-                         * hsm = hora salida marcado
-                         * msm = minutos salida marcado
-                         */
-                        var hso = reporte[i].hora_salida;
-                        var mso = reporte[i].minutos_salida;
-                        var hsm = reporte[i].fecha_y_hora_marco_max.substring(0, 2);
-                        var msm = reporte[i].fecha_y_hora_marco_max.substring(3, 5);
-
-                        if (calculoMarcadoAdelantado(hsm,msm,hso,mso).substring(0, 1)=='-') {
-                            reporte[i].salioantes = calculoMarcadoAdelantado(hsm,msm,hso,mso);
-                            reporte[i].horasExtra = 'Ningunas';
-                        } else {
-                            reporte[i].salioantes = 'Horario cumplido';
-                            reporte[i].horasExtra = horasExtras(calculoMarcadoAdelantado(hsm,msm,hso,mso));
-                        }
-
-                        var fechaMenor = new Date();
-                        var fechaMayor = new Date();
-
-                        fechaMayor.setHours(heo,meo,00,000);
-                        fechaMenor.setHours(hem,mem,00,000);
-
-                        var resta = (fechaMayor - fechaMenor);
-
-                        if (resta < 0) {
-                            if ((resta*-1)>300000) {
-                                reporte[i].asis = 'Sí';
-                                $scope.tarde +=1;
-                            }else {
-                                reporte[i].asis = 'No';
-                            }
-                        }else {
-                            reporte[i].asis = 'No';
-                        }
-
-                        reporte[i].horaEntraExcel = reporte[i].hora_entrada+":"+reporte[i].minutos_entrada
-                        reporte[i].horaSaliExcel = reporte[i].hora_salida+":"+reporte[i].minutos_salida
-
-                    }
-                    
-                    $rootScope.reporteporusuario = reporte;
-                    $rootScope.department = $rootScope.department
-                    $rootScope.totalTeoricoFinal = response.data.totalTeoricoFinal;
-                    $rootScope.totalRealTeoricoFinal = response.data.totalRealTeoricoFinal;
-                    $scope.carga = false;
-
-                    $scope.tama = $rootScope.reporteporusuario.length;
-                    $scope.currentPage = 0; 
-                    $scope.pageSize = 5; 
-                    $scope.pages = [];
-                    $scope.pages.length = 0;
-                    
-                    var ini = $scope.currentPage - 4;
-                    var fin = $scope.currentPage + 5;
-                    if (ini < 1) {
-                        ini = 1;
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        /*if (Math.ceil($scope.tama/$scope.pageSize) > 6)
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        else
-                        fin = Math.ceil($scope.tama/$scope.pageSize);*/
-                    } else {
-                        if (ini >= Math.ceil($scope.tama/$scope.pageSize) - 50) {
-                        ini = Math.ceil($scope.tama/$scope.pageSize) - 50;
-                        fin = Math.ceil($scope.tama/$scope.pageSize);
-                        }
-                    }
-                    if (ini < 1) ini = 1;
-                    for (var i = ini; i <= fin; i++) {
-                        $scope.pages.push({
-                        no: i
-                        });
-                    }
-            
-                    if ($scope.currentPage >= $scope.pages.length)
-                        $scope.currentPage = $scope.pages.length - 1;
-                    
-            
-                    $scope.setPage = function(index) {
-                    $scope.currentPage = index - 1;
-                    };
+                console.log(paramAsisten);
+                if(response.data.message){
+                    $rootScope.noreg=true;
                 }else{
-                    $scope.carga = false;
-                    $rootScope.reporteporusuario = {};
-                    alert(response.data.message);
+                    $rootScope.noreg=false;
+                }
+
+                $rootScope.reporteporusuario = response.data.respuesta;
+
+                $rootScope.totalTeoricoFinal = response.data.totalTeoricoFinal;
+                $rootScope.totalRealTeoricoFinal = response.data.totalRealTeoricoFinal;
+                $scope.carga = false;
+
+                $scope.tama = $rootScope.reporteporusuario.length;
+                $scope.currentPage = 0;
+                $scope.pageSize = 5;
+                $scope.pages = [];
+                $scope.pages.length = 0;
+
+                var ini = $scope.currentPage - 4;
+                var fin = $scope.currentPage + 5;
+                if (ini < 1) {
+                    ini = 1;
+                    fin = Math.ceil($scope.tama/$scope.pageSize);
+                    /*if (Math.ceil($scope.tama/$scope.pageSize) > 6)
+                    fin = Math.ceil($scope.tama/$scope.pageSize);
+                    else
+                    fin = Math.ceil($scope.tama/$scope.pageSize);*/
+                } else {
+                    if (ini >= Math.ceil($scope.tama/$scope.pageSize) - 5) {
+                        ini = Math.ceil($scope.tama/$scope.pageSize) - 5;
+                        fin = Math.ceil($scope.tama/$scope.pageSize);
+                    }
+                }
+                if (ini < 1) ini = 1;
+                for (var i = ini; i <= fin; i++) {
+                    $scope.pages.push({
+                        no: i
+                    });
+                }
+
+                if ($scope.currentPage >= $scope.pages.length){
+                    $scope.currentPage = $scope.pages.length - 1;
+                    $scope.setPage = function(index) {
+                    $scope.currentPage = index - 1};
                 }
             },
             function error(response) {
                 $scope.carga = false;
-               
+
                 alert('Se produjo un error');
             }
         );
-    }
+    };
 
-    /**
-     * Abreviaturas
-     * hem = hora entrada marcar
-     * mem = minutos entrada marcar
-     * hsm = hora salida marcar
-     * msm = minutos salida marcar
-     */
-    function calculoMarcadoAtrasado(hem,mem,hsm,msm){
-
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        fechaMayor.setHours(hem,mem,00,000);
-        fechaMenor.setHours(hsm,msm,00,000);
-
-        var resta = (fechaMayor - fechaMenor);
-
-        var ms = resta%1000;
-            resta = (resta - ms)/1000;
-        
-        var secs = resta % 60;
-            resta = (resta - secs) / 60;
-        
-        var mins = resta % 60;
-        
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs>=0 && hrs<10){
-            horas = "0"+ hrs;
-        }else
-            horas = hrs;
-
-        if (mins>=0 && mins<10){
-            minutos = "0"+ mins;
-        }else
-            minutos = mins;
-
-        if (secs>=0 && secs<10){
-            segundos = "0"+ secs;
-        }else
-            segundos = secs;
-
-        //0-1:0-44:00
-        var tiempo = horas+":"+minutos+":"+segundos;
-
-        var horaRetraso;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio    = "";
-            horaRetraso = "-" + tiempo.replace(menos, porVacio);
-        }else
-            horaRetraso = tiempo;
-
-        return horaRetraso;
-    }
-
-    /**
-     * Abreviaturas
-     * hso = hora salida oficial
-     * mso = minutos salida oficial
-     * hsm = hora salida marcado
-     * msm = minutos salida marcado
-     */
-    function calculoMarcadoAdelantado(hsm,msm,hso,mso){
-
-        var fechaMenor = new Date();
-        var fechaMayor = new Date();
-        fechaMayor.setHours(hsm,msm,00,000);
-        fechaMenor.setHours(hso,mso,00,000);
-
-        var resta = (fechaMayor - fechaMenor);
-
-        if (resta < 0) {
-            if ((resta*-1)>300000){
-
-            }
-        }
-
-        var ms = resta%1000;
-            resta = (resta - ms)/1000;
-        
-        var secs = resta % 60;
-            resta = (resta - secs) / 60;
-        
-        var mins = resta % 60;
-        
-        var hrs = (resta - mins) / 60;
-
-        var horas, minutos, segundos;
-        if (hrs>=0 && hrs<10){
-            horas = "0"+ hrs;
-        }else
-            horas = hrs;
-
-        if (mins>=0 && mins<10){
-            minutos = "0"+ mins;
-        }else
-            minutos = mins;
-
-        if (secs>=0 && secs<10){
-            segundos = "0"+ secs;
-        }else
-            segundos = secs;
-
-        //resultado 0-1:0-44:00
-        var tiempo = horas+":"+minutos+":"+segundos;
-
-        //formateo -01:44:00
-        var horaAdelantada;
-        if (tiempo.indexOf('-') != -1) {
-            var menos = /-/g;
-            var porVacio    = "";
-            horaAdelantada = "-" + tiempo.replace(menos, porVacio);
-        }else
-            horaAdelantada = tiempo;
-
-        return horaAdelantada;
-    }
-
-    function horasExtras(tiempo) {
-        if (tiempo > "00:30:00") {
-            return tiempo;
-        }else{
-            return 'Ningunas';
-        }
-    }
 
 
     $scope.exportData = function () {

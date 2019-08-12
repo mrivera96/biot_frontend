@@ -338,7 +338,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="r in reporteporusuario | filter:filters.search |startFromGrid: currentPage * pageSize | limitTo: pageSize | orderBy : '+fecha'"
-                                    ng-style="r.asis === 'Sí' && {'background-color': 'red'}">
+                                    ng-style="r.asis === 'SÍ' && {'background-color': 'red'}">
                                     <td>{{$index + 1}}</td>
                                     <td style="padding-left:85px;">{{ r.nombre }}</td>
                                     <td style="padding-left:85px;">{{ r.departamento }}</td>
@@ -356,15 +356,10 @@
                                     <td>{{ r.fecha }}</td>
                                     <td>{{ r.dia }}</td>
                                     <td>{{ r.asis }}</td>
-                                    <td ng-if="r.fecha_y_hora_marco_min == r.fecha_y_hora_marco_max">0 horas 0
-                                        minutos</td>
                                     <td>{{r.horastrabajadassincomer}}</td>
-                                    <td ng-if="r.fecha_y_hora_marco_min == r.fecha_y_hora_marco_max">0 horas 0
-                                        minutos</td>
-                                    <td ng-if="r.fecha_y_hora_marco_min != r.fecha_y_hora_marco_max">
-                                        {{ r.horasrealestrabajadas}}</td>
+                                    <td>{{ r.horasrealestrabajadas}}</td>
                                     <td>{{ r.salioantes }}</td>
-                                    <td>{{ r.horasExtra }}</td>
+                                    <td>{{ r.extras }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -377,10 +372,11 @@
                             ng-disabled='currentPage >= reporteporusuario.length/pageSize - 1' ,
                             ng-click='currentPage = currentPage + 1'>&raquo;</button>
 
-                        <h3 ng-show="!reporteporusuario.length && !carga">No hay registros</h3>
+
                     </div>
                 </div>
             </div>
+            <h3 ng-show="noreg==true && !carga">No hay registros</h3>
         </div>
     </div>
 
