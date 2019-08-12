@@ -5,7 +5,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
     };
 
     $rootScope.titulo = "Detalle de Empleado";
-    $rootScope.deviceList = 0
+    $rootScope.deviceList = 0;
 
     $scope.empleado ={};
     $scope.product = {};
@@ -43,7 +43,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
         $scope.carga2 = true;
 
-        if(Type == 11){
+        if(Type === 11){
             type = "bw";
         }else{
             type = "bioface";
@@ -69,7 +69,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 }
             }).then(
                 function success(response) {
-                    alert('Dispositivo eliminado correctamente')
+                    alert('Dispositivo eliminado correctamente');
                     deviceList();
                 },
                 function error(response) {
@@ -79,7 +79,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 }
             );
         }
-    }
+    };
 
     $http({
         method: "GET",
@@ -203,7 +203,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 if (conta2 == 0){
                     angular.forEach($rootScope.dispositivos, function(value, key){
                         if(value.IdDevice == $scope.empleado['IdDispositivo']){
-                            type="bw"
+                            type="bw";
                             if(value.Type!=11){
                                 type="bioface";
                             }
@@ -227,7 +227,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 if (conta2 == 0){
                     angular.forEach($rootScope.dispositivos, function(value, key){
                         if(value.IdDevice == $scope.empleado['IdDispositivo']){
-                            type="bw"
+                            type="bw";
                             if(value.Type!=11){
                                 type="bioface";
                             }
@@ -251,7 +251,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 if (conta2 == 0){
                     angular.forEach($rootScope.dispositivos, function(value, key){
                         if(value.IdDevice == $scope.empleado['IdDispositivo']){
-                            type="bw"
+                            type="bw";
                             if(value.Type!=11){
                                 type="bioface";
                             }
@@ -275,11 +275,11 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             alert('Este dispositivo ya esta agregado a la lista')
         }
 
-    }
+    };
 
     $scope.deleteMate = function(i){
         $rootScope.tempProduct.splice(i,1);
-    }
+    };
 
     $scope.modificarEmpleados = function (userInfo) {
         /*if ($rootScope.tempProduct.length == 0){
@@ -323,7 +323,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 $scope.carga3 = false;
 
                 alert(''+response.data.respuesta);
-                $rootScope.tempProduct = []
+                $rootScope.tempProduct = [];
                 $rootScope.fingers = [
                     "",
                     "",
@@ -344,7 +344,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             }
         );
         //}
-    }
+    };
 
     $scope.mostrar = function (paramAsisten) {
         $scope.carga = true;
@@ -367,7 +367,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
         mostrar1 = year1 + "-" + month1 + "-" + day1;
 
         if (paramAsisten['tipo']){
-            paramAsisten['fecha'] = mostrar+","+mostrar1;
+            paramAsisten['fecha'] = mostrar1+","+mostrar;
 
         } else {
             paramAsisten['fecha'] = mostrar;
@@ -388,7 +388,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             }
         }).then(
             function success(response) {
-                console.log(paramAsisten);
+
                 if(response.data.message){
                     $rootScope.noreg=true;
                 }else{
@@ -397,11 +397,22 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
                 $rootScope.reporteporusuario = response.data.respuesta;
 
+                angular.forEach($rootScope.reporteporusuario, function (value) {
+
+
+                    var dtstr = value.fecha;
+                    var nd=new Date(dtstr.split("/").reverse().join("/")).getTime();
+
+                    value.formedDate=nd;
+
+                });
+
+
                 $rootScope.totalTeoricoFinal = response.data.totalTeoricoFinal;
                 $rootScope.totalRealTeoricoFinal = response.data.totalRealTeoricoFinal;
                 $scope.carga = false;
-
-                $scope.tama = $rootScope.reporteporusuario.length;
+                $rootScope.pagination($rootScope.reporteporusuario.length,5)
+                /*$scope.tama = $rootScope.reporteporusuario.length;
                 $scope.currentPage = 0;
                 $scope.pageSize = 5;
                 $scope.pages = [];
@@ -415,7 +426,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                     /*if (Math.ceil($scope.tama/$scope.pageSize) > 6)
                     fin = Math.ceil($scope.tama/$scope.pageSize);
                     else
-                    fin = Math.ceil($scope.tama/$scope.pageSize);*/
+                    fin = Math.ceil($scope.tama/$scope.pageSize);
                 } else {
                     if (ini >= Math.ceil($scope.tama/$scope.pageSize) - 5) {
                         ini = Math.ceil($scope.tama/$scope.pageSize) - 5;
@@ -433,7 +444,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                     $scope.currentPage = $scope.pages.length - 1;
                     $scope.setPage = function(index) {
                     $scope.currentPage = index - 1};
-                }
+                }*/
             },
             function error(response) {
                 $scope.carga = false;
@@ -441,6 +452,11 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 alert('Se produjo un error');
             }
         );
+    };
+
+    $scope.filterData = function(data) {
+        tama = $filter('filter')($rootScope.reporteporusuario, data);
+        $rootScope.pagination(tama.length, 5);
     };
 
 
@@ -491,7 +507,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 {columnid: 'asis', title: '¿Llegó tarde?'},
                 {columnid: 'salioantes', title: 'Salida'},
                 {columnid: 'horasExtra', title: 'Horas Extras'}
-            ],
+            ]
         };
 
         $scope.result = $filter('filter')($rootScope.reporteporusuario, $scope.filters.search);

@@ -250,21 +250,6 @@
                     </div>
                 </div>
 
-                <div class="columna-6">
-                    <div class="form-texto-animado" style="margin-bottom: 10px !important;">
-                        <input type="date" class="input-text" name="fecha" ng-model="asistencia.fechaF" required="">
-                        <label for="fecha">Fecha final</label>
-                        <span ng-show="!exp.$pristine && exp.fechaIncio.$error.required" class="error letra">La
-                            fecha es obligatoria</span>
-                    </div>
-                </div>
-
-    
-
-            </div>
-
-            <div class="columna-12">
-
                 <div class="columna-6" ng-if="asistencia.tipo">
                     <div class="form-texto-animado" style="margin-bottom: 10px !important;">
                         <input type="date" class="input-text" name="fecha" ng-model="asistencia.fechaI" required="">
@@ -273,6 +258,22 @@
                             fecha es obligatoria</span>
                     </div>
                 </div>
+
+
+
+            </div>
+
+            <div class="columna-12">
+                <div class="columna-6">
+                    <div class="form-texto-animado" style="margin-bottom: 10px !important;">
+                        <input type="date" class="input-text" name="fecha" ng-model="asistencia.fechaF" required="">
+                         <label for="fecha">Fecha final</label>
+                         <span ng-show="!exp.$pristine && exp.fechaIncio.$error.required" class="error letra">La
+                                        fecha es obligatoria</span>
+                                </div>
+                            </div>
+
+
 
                 
                 <div class="columna-6" style="padding-top: 10px !important">
@@ -337,7 +338,7 @@
                                 <th>Horas Extra</th>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="r in reporteporusuario | filter:filters.search |startFromGrid: currentPage * pageSize | limitTo: pageSize | orderBy : '+fecha'"
+                                <tr ng-repeat="r in reporteporusuario | filter:filters.search  | orderBy:'+formedDate' |startFromGrid: currentPage * pageSize | limitTo: pageSize"
                                     ng-style="r.asis === 'SÍ' && {'background-color': 'red'}">
                                     <td>{{$index + 1}}</td>
                                     <td style="padding-left:85px;">{{ r.nombre }}</td>

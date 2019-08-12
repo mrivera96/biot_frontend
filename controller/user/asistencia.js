@@ -1,6 +1,6 @@
 app.controller('asistencia', function($scope, $rootScope, $http, $location, $filter) {
 
-    $rootScope.token = '<?php echo $_SESSION["token"];?>'
+    $rootScope.token = '<?php echo $_SESSION["token"];?>';
     $rootScope.titulo = "Reportes de asistencia";
     $scope.ver = false;
 
@@ -78,6 +78,8 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
             }).then(
                 function success(response) {
                     $rootScope.reporte =  response.data.respuesta;
+
+
                     $scope.tarde=0;
                     for(var i=0;i<$rootScope.reporte.length;i++){
                         if($rootScope.reporte[i].asis==="SÍ"){
@@ -98,7 +100,7 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
             alert('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos');
             $scope.carga = false;
         }
-    }
+    };
 
 
 
@@ -152,7 +154,7 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                 { columnid: 'fecha', title: 'Fecha' },
                 { columnid: 'dia', title: 'Día' },
                 { columnid: 'asis', title: '¿Llegó tarde?' }
-            ],
+            ]
         };
 
         $scope.result = $filter('filter')($rootScope.reporte, $scope.filters.search);
