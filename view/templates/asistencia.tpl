@@ -32,8 +32,7 @@
                         <select class="input-text" name="IdDepartment" ng-model="asistencia.IdDepartment">
                             <option value="">Seleccione un departamento</option>
                             <option ng-repeat="d in departments"
-                                ng-if="deptsUsr[d.IdDepartment]==true ||
-                                IdUsr==1" value="{{d.IdDepartment}}">{{d.Description}}
+                                 value="{{d.IdDepartment}}">{{d.Description}}
                             </option>
                         </select>
                         <label for="IdDepartment">Departamento:</label>
