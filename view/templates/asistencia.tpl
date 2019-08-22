@@ -29,10 +29,11 @@
                 <div class="columna-4">
                     <div class="form-texto-animado" style="margin-bottom: 15px
                         !important">
-                        <select class="input-text" name="IdDepartment" ng-model="asistencia.IdDepartment">
+                        <select  class="input-text" name="IdDepartment" ng-model="asistencia.IdDepartment">
+                    
                             <option value="">Seleccione un departamento</option>
                             <option ng-repeat="d in departments"
-                                 value="{{d.IdDepartment}}">{{d.Description}}
+                                 value="{{d.IdDepartment}}" >{{d.Description}}
                             </option>
                         </select>
                         <label for="IdDepartment">Departamento:</label>
