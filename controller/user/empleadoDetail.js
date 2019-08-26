@@ -78,6 +78,8 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
                 }
             );
+        }else{
+            $scope.carga = false;
         }
     };
 
