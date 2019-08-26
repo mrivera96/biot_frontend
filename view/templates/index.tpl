@@ -89,7 +89,7 @@
     </div>
 </div>
 
-<div class="columna-6">
+<div class="columna-6" ng-if="permissions.hors_sect==true">
     <div class="card">
         <div class="card-encabezado">
             <h4 class="titulo" id="reportes">Horarios</h4>
@@ -104,7 +104,7 @@
     </div>
 </div>
 
-<div class="columna-6">
+<div class="columna-6" ng-if="permissions.param_sect==true">
     <div class="card">
         <div class="card-encabezado">
             <h4 class="titulo" id="reportes">Parámetros del Sistema</h4>
@@ -119,7 +119,7 @@
     </div>
 </div>
 
-<div class="columna-6">
+<div class="columna-6" ng-if="permissions.users_sect==true">
     <div class="card">
         <div class="card-encabezado">
             <h4 class="titulo" id="reportes">Usuarios</h4>
@@ -150,16 +150,3 @@
     </div>
 </div>-->
 
-<style>
-  .error {
-    color: red;
-  }
-
-  .warning {
-    color: #ffcc00;
-  }
-
-  .letra {
-    font-size: 13px;
-  }
-</style>

@@ -391,27 +391,38 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
                 if(response.data.message){
                     $rootScope.noreg=true;
+                    $scope.carga = false;
                 }else{
                     $rootScope.noreg=false;
+                    var reporte=response.data.respuesta;
+                    for(var i=0;i<reporte.length;i++){
+                        if(reporte[i].asis==="SÍ"){
+                            $scope.tarde+=1;
+                        }
+
+                        reporte[i].horaEntraExcel= reporte[i].hora_entrada+":"+ reporte[i].minutos_entrada;
+                        reporte[i].horaSaliExcel= reporte[i].hora_salida+":"+ reporte[i].minutos_salida;
+                    }
+                    $rootScope.reporteporusuario = reporte ;
+
+                    angular.forEach($rootScope.reporteporusuario, function (value) {
+
+
+                        var dtstr = value.fecha;
+                        var nd=new Date(dtstr.split("/").reverse().join("/")).getTime();
+
+                        value.formedDate=nd;
+
+                    });
+
+
+                    $rootScope.totalTeoricoFinal = response.data.totalTeoricoFinal;
+                    $rootScope.totalRealTeoricoFinal = response.data.totalRealTeoricoFinal;
+                    $scope.carga = false;
+                    $rootScope.pagination($rootScope.reporteporusuario.length,5);
                 }
 
-                $rootScope.reporteporusuario = response.data.respuesta;
 
-                angular.forEach($rootScope.reporteporusuario, function (value) {
-
-
-                    var dtstr = value.fecha;
-                    var nd=new Date(dtstr.split("/").reverse().join("/")).getTime();
-
-                    value.formedDate=nd;
-
-                });
-
-
-                $rootScope.totalTeoricoFinal = response.data.totalTeoricoFinal;
-                $rootScope.totalRealTeoricoFinal = response.data.totalRealTeoricoFinal;
-                $scope.carga = false;
-                $rootScope.pagination($rootScope.reporteporusuario.length,5)
                 /*$scope.tama = $rootScope.reporteporusuario.length;
                 $scope.currentPage = 0;
                 $scope.pageSize = 5;
@@ -506,7 +517,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 {columnid: 'dia', title: 'Día'},
                 {columnid: 'asis', title: '¿Llegó tarde?'},
                 {columnid: 'salioantes', title: 'Salida'},
-                {columnid: 'horasExtra', title: 'Horas Extras'}
+                {columnid: 'horastrabajadassincomer', title: 'Horas teóricas trabajadas al día'},
+                {columnid: 'horasrealestrabajadas', title: 'Horas reales trabajadas al día'},
+                {columnid: 'extras', title: 'Horas Extras'}
             ]
         };
 

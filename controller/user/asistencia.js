@@ -81,15 +81,19 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                 }).then(
                     function success(response) {
                         if(response.data.respuesta){
-                            $rootScope.reporte =  response.data.respuesta;
-    
+                            var reporte =  response.data.respuesta;
+
                             $scope.tarde=0;
-                            for(var i=0;i<$rootScope.reporte.length;i++){
-                                if($rootScope.reporte[i].asis==="SÍ"){
+                            for(var i=0;i<reporte.length;i++){
+                                if(reporte[i].asis==="SÍ"){
                                     $scope.tarde+=1;
                                 }
+
+                                reporte[i].horaEntraExcel= reporte[i].hora_entrada+":"+ reporte[i].minutos_entrada;
+                                reporte[i].horaSaliExcel= reporte[i].hora_salida+":"+ reporte[i].minutos_salida;
                             }
-        
+                            $rootScope.reporte =  reporte;
+
                             $rootScope.pagination($rootScope.reporte.length, 50);
                             $scope.carga = false;
                         }
@@ -97,12 +101,12 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                         $scope.carga = false;
                     },
                     function error(response) {
-                        alert('Se produjo un error');
+                        alert('Se produjo un error.');
                     }
                 );
     
             } else {
-                alert('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos');
+                alert('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos.');
                 $scope.carga = false;
             }
         }
@@ -157,12 +161,16 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                 { columnid: 'fecha_y_hora_marco_max', title: 'Hora marcó (salida)' },
                 { columnid: 'fecha', title: 'Fecha' },
                 { columnid: 'dia', title: 'Día' },
-                { columnid: 'asis', title: '¿Llegó tarde?' }
+                { columnid: 'asis', title: '¿Llegó tarde?' },
+                { columnid: 'horastrabajadas', title: 'Horas teóricas trabajadas' },
+                { columnid: 'horasrealestrabajadas', title: 'Horas reales trabajadas' },
+                { columnid: 'salioantes', title: 'Tiempo de salida' },
+                { columnid: 'extras', title: 'Horas Extras' }
             ]
         };
 
         $scope.result = $filter('filter')($rootScope.reporte, $scope.filters.search);
-        alasql('SELECT * INTO XLS("Reporte asistencia.xls",?) FROM ?', [mystyle, $scope.result]);
+        alasql('SELECT * INTO XLS("Reporte asistencia '+fecha+'.xls",?) FROM ?', [mystyle, $scope.result]);
     };
 
 

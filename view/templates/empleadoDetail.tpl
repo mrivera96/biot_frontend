@@ -15,7 +15,7 @@
                         <div class="columna-3">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
                                 <input type="text" class="input-text" name="IdUser" ng-maxlength="4"
-                                    ng-model="empleado.IdUser" required>
+                                    ng-model="empleado.IdUser" required ng-readonly="permissions.editemp==false">
                                 <span ng-show="!exp.$pristine && exp.IdUser.$error.required" class="error letra">Este campo es obligatorio</span>
                                 <span ng-show="!exp.$pristine && exp.IdUser.$error.maxlength" class="error letra">Máximo 4 caracteres</span>
                                 <label for="IdUser">Código de empleado:</label>
@@ -25,7 +25,7 @@
                         <div class="columna-3">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
                                 <input type="text" class="input-text" name="IdentificationNumber" ng-maxlength="15"
-                                    ng-minlength="13" ng-model="empleado.IdentificationNumber" required>
+                                    ng-minlength="13" ng-model="empleado.IdentificationNumber" required ng-readonly="permissions.editemp==false">
                                 <span ng-show="!exp.$pristine && exp.IdentificationNumber.$error.required" class="error letra">El nombre es obligatorio</span>
                                 <span ng-show="!exp.$pristine && exp.IdentificationNumber.$error.maxlength" class="error letra">Máximo 15 caracteres</span>
                                 <span ng-show="!exp.$pristine && exp.IdentificationNumber.$error.minlength" class="error letra">Mínimo 15 caracteres</span>
@@ -36,7 +36,7 @@
                         <div class="columna-3">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
                                 <input type="text" class="input-text" name="Name" ng-maxlength="250"
-                                    ng-model="empleado.Name" required>
+                                    ng-model="empleado.Name" required ng-readonly="permissions.editemp==false">
                                 <span ng-show="!exp.$pristine && exp.Name.$error.required" class="error letra">Este campo es obligatorio</span>
                                 <span ng-show="!exp.$pristine && exp.Name.$error.maxlength" class="error letra">Máximo 250 caracteres</span>
                                 <label for="Name">Nombre:</label>
@@ -46,7 +46,7 @@
                         <div class="columna-3">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
                                 <input type="date" class="input-text" name="Birthday" ng-model="empleado.Birthday"
-                                required>
+                                required ng-readonly="permissions.editemp==false">
                                 <span ng-show="!exp.$pristine && exp.Birthday.$error.required" class="error letra">Este campo es obligatorio</span>
                                 <label for="Birthday">Fecha de nacimiento:</label>
                             </div>
@@ -59,7 +59,7 @@
 
                         <div class="columna-4">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
-                                <select class="input-text" name="IdDepartment" ng-model="empleado.IdDepartment" required>
+                                <select class="input-text" name="IdDepartment" ng-model="empleado.IdDepartment" required ng-readonly="permissions.editemp==false">
                                     <option value="">Seleccione un departamento</option>
                                     <option ng-repeat="d in departments" value="{{d.IdDepartment}}"
                                         ng-selected="{{d.IdDepartment == empleado.IdDepartment}}">{{d.Description}}
@@ -76,7 +76,7 @@
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
 
 
-                                <select class="input-text" name="UseShift" ng-model="empleado.ShiftId" required>
+                                <select class="input-text" name="UseShift" ng-model="empleado.ShiftId" required ng-readonly="permissions.editemp==false">
                                     <option value="">Seleccione un horario</option>
                                     <option ng-repeat="h in horarios" value="{{h.ShiftId}}"
                                         ng-selected="{{h.ShiftId == empleado.UseShift}}">{{h.Description}}</option>
@@ -89,7 +89,7 @@
 
                         <div class="columna-4">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important">
-                                <select class="input-text" name="Active" ng-model="empleado.Active" required>
+                                <select class="input-text" name="Active" ng-model="empleado.Active" required ng-readonly="permissions.editemp==false">
                                     <option value="1">Sí</option>
                                     <option value="0">No</option>
                                 </select>
@@ -136,7 +136,7 @@
 
                         <div class="columna-4">
                             <div class="form-texto-animado" style="margin-bottom: 15px !important" ng-if="permissions.agdispemp==true">
-                                <select class="input-text" name="IdDispositivo" ng-model="empleado.IdDispositivo" >
+                                <select class="input-text" name="IdDispositivo" ng-model="empleado.IdDispositivo" ng-readonly="permissions.editemp==false">
                                     <option value="">Seleccione un dispositivo</option>
                                     <option ng-repeat="d in dispositivos" value="{{d.IdDevice}}">{{d.Description}}
                                     </option>
@@ -174,7 +174,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <button class="btn form odoo pull-right" ng-if="permissions.editemp==true" ng-click="modificarEmpleados(empleado)"
+                    <button class="btn form odoo pull-right" ng-if="permissions.btn_editemp==true" ng-click="modificarEmpleados(empleado)"
                         ng-disabled="carga2 || !exp.$valid">
                         Modificar
                     </button>

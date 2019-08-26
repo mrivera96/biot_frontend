@@ -158,7 +158,11 @@ loadData();
         edithrs: false,
         creaparam: false,
         crearusrs: false,
-        editusrs: false
+        editusrs: false,
+        param_sect:false,
+        users_sect:false,
+        hors_sect:false,
+        btn_editemp:false
     };
 
     $scope.agregarDispositivo = function () {

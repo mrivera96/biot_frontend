@@ -412,6 +412,40 @@
                     </div>
                 </div>
             </div>
+
+             <div class="columna-12">
+                            <div class="columna-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input ng-model="permisos.param_sect" type="checkbox" class="custom-control-input" id="param_sect">
+                                    <label class="custom-control-label" for="param_sect">Sección Parámetros del Sistema
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="columna-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input ng-model="permisos.users_sect" type="checkbox" class="custom-control-input" id="users_sect">
+                                    <label class="custom-control-label" for="users_sect">Sección Usuarios </label>
+                                </div>
+                            </div>
+             </div>
+
+             <div class="columna-12">
+                                         <div class="columna-6">
+                                             <div class="custom-control custom-checkbox">
+                                                 <input ng-model="permisos.hors_sect" type="checkbox" class="custom-control-input" id="hors_sect">
+                                                 <label class="custom-control-label" for="hors_sect">Sección Horarios
+                                                 </label>
+                                             </div>
+                                         </div>
+
+                                         <div class="columna-6">
+                                             <div class="custom-control custom-checkbox">
+                                                 <input ng-model="permisos.btn_editemp" type="checkbox" class="custom-control-input" id="btn_editemp">
+                                                 <label class="custom-control-label" for="btn_editemp">Botón de editar Empleado </label>
+                                             </div>
+                                         </div>
+                          </div>
     
             <div class="columna-12">
                 <button class="btn form odoo pull-right" ng-click="guardar()" ng-disabled="carga2">

@@ -125,8 +125,8 @@
                                 <input type="text" class="input-text" id="name" name="name" ng-maxlength="25"
                                     ng-model="dataForm2.name" required>
                                 <label for="name">Nombres</label>
-                                <span ng-show="!upload.$pristine && upload.name.$error.required" class="error letra">El
-                                    nombre del administrador es obligatorio.</span>
+                                <span  ng-show="!upload.$pristine && upload.name.$error.required" class="error letra">El
+                                    nombre del usuario es obligatorio.</span>
                                 <span ng-show="!upload.$pristine && upload.name.$error.maxlength"
                                     class="error letra">Máximo 25 caracteres</span>
                             </div>
@@ -138,7 +138,7 @@
                                     ng-model="dataForm2.last_name" required>
                                 <label for="last_name">Apellidos</label>
                                 <span ng-show="!upload.$pristine && upload.last_name.$error.required"
-                                    class="error letra">El apellido del administrador es obligatorio.</span>
+                                    class="error letra">El apellido del usuario es obligatorio.</span>
                                 <span ng-show="!upload.$pristine && upload.last_name.$error.maxlength"
                                     class="error letra">Máximo 25 caracteres</span>
                             </div>
@@ -156,7 +156,7 @@
                                     <option value="X">Prefiero no decirlo</option>
                                 </select>
                                 <span ng-show="!upload.$pristine && upload.genero.$error.required"
-                                    class="error letra">El genero del administrador es obligatorio.</span>
+                                    class="error letra">El género del usuario es obligatorio.</span>
                             </div>
                         </div>
 
@@ -166,7 +166,7 @@
                                     ng-maxlength="15" ng-minlength="13" ng-model="dataForm2.no_identidad" required>
                                 <label for="no_identidad">N# de identidad</label>
                                 <span ng-show="!upload.$pristine && upload.no_identidad.$error.required"
-                                    class="error letra">El N# de identidad del administrador es obligatorio.</span>
+                                    class="error letra">El N# de identidad del usuario es obligatorio.</span>
                                 <span ng-show="!upload.$pristine && upload.no_identidad.$error.maxlength"
                                     class="error letra">Máximo 15 caracteres</span>
                                 <span ng-show="!upload.$pristine && upload.no_identidad.$error.minlength"
@@ -182,7 +182,7 @@
                                     ng-minlength="8" ng-model="dataForm2.email" required>
                                 <label for="email">Correo empresarial</label>
                                 <span ng-show="!upload.$pristine && upload.email.$error.required" class="error letra">El
-                                    Correo empresarial del administrador es obligatorio.</span>
+                                    Correo empresarial del usuario es obligatorio.</span>
                                 <span ng-show="!upload.$pristine && upload.email.$error.maxlength"
                                     class="error letra">Máximo 100 caracteres</span>
                                 <span ng-show="!upload.$pristine && upload.email.$error.minlength"
@@ -192,11 +192,11 @@
 
                         <div class="columna-6">
                             <div class="form-grupo form-texto-animado" style="margin-bottom: 15px">
-                                <input type="text" class="input-text" id="password" name="password" ng-maxlength="100"
+                                <input type="password" class="input-text" id="password" name="password" ng-maxlength="100"
                                     ng-minlength="3" ng-model="dataForm2.password" required>
                                 <label for="password">Contraseña</label>
                                 <span ng-show="!upload.$pristine && upload.password.$error.required"
-                                    class="error letra">La contraseña del administrador es obligatoria.</span>
+                                    class="error letra">La contraseña del usuario es obligatoria.</span>
                                 <span ng-show="!upload.$pristine && upload.password.$error.maxlength"
                                     class="error letra">Máximo 100 caracteres</span>
                                 <span ng-show="!upload.$pristine && upload.password.$error.minlength"
@@ -209,12 +209,12 @@
 
                         <div class="columna-6">
                             <div class="form-grupo form-texto-animado" style="margin-bottom: 15px">
-                                <input type="text" class="input-text" id="password_confirmation"
+                                <input type="password" class="input-text" id="password_confirmation"
                                     name="password_confirmation" ng-maxlength="100" ng-minlength="3"
                                     ng-model="dataForm2.password_confirmation" required>
                                 <label for="password_confirmation">Confirmar contraseña</label>
                                 <span ng-show="!upload.$pristine && upload.password_confirmation.$error.required"
-                                    class="error letra">La confirmación de contraseña del administrador es
+                                    class="error letra">La confirmación de contraseña del usuario es
                                     obligatoria.</span>
                                 <span ng-show="!upload.$pristine && upload.password_confirmation.$error.maxlength"
                                     class="error letra">Máximo 100 caracteres</span>
@@ -225,10 +225,9 @@
                         <div class="columna-6">
                             <div class="form-grupo form-texto-animado" style="margin-bottom: 15px">
                                 <input type="text" class="input-text" id="telefono" name="telefono" ng-maxlength="100"
-                                    ng-minlength="8" ng-model="dataForm2.telefono" required>
+                                    ng-minlength="8" ng-model="dataForm2.telefono">
                                 <label for="telefono">Telefono</label>
-                                <span ng-show="!upload.$pristine && upload.telefono.$error.required"
-                                    class="error letra">El telefono del administrador es obligatoria.</span>
+
                                 <span ng-show="!upload.$pristine && upload.telefono.$error.maxlength"
                                     class="error letra">Máximo 100 caracteres</span>
                                 <span ng-show="!upload.$pristine && upload.telefono.$error.minlength"

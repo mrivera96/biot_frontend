@@ -138,8 +138,7 @@
                                     </td>
                                     <td style="padding-left:85px;">{{ r.departamento }}</td>
                                     <td>{{ r.nombre_horario }}</td>
-                                    <td>{{ r.hora_entrada}}:{{r.minutos_entrada}}
-                                    </td>
+                                    <td>{{ r.hora_entrada}}:{{r.minutos_entrada}}</td>
                                     <td>{{ r.fecha_y_hora_marco_min}}</td>
                                     <td>{{ r.hora_salida}}:{{r.minutos_salida}}</td>
                                     <td ng-if="r.fecha_y_hora_marco_min ==
