@@ -175,9 +175,7 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             function error(response) {
                 $scope.carga2 = false;
                  $('#error-message').text(response.data.respuesta);
-            $('#show-modal').click();
-
-
+                 $('#show-modal').click();
             }
         );
     }
