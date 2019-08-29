@@ -45,12 +45,13 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
             function success(response) {
                 $rootScope.empleados = response.data.respuesta;
                 $scope.carga2 = false;
-             
+
                 $rootScope.pagination($rootScope.empleados.length,50);
             },
             function error(response) {
                 $scope.carga2 = false;
-                alert('Error al cargar los empleados');
+                $('#error-message').text('Error al cargar los empleados.');
+                $('#show-modal').click();
             }
         );
     }
@@ -73,7 +74,8 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
             $scope.departments = response.data.respuesta;
         },
         function error(response) {
-            alert('Se produjo un error al cargar los departamentos');
+             $('#error-message').text('Error al cargar los departamentos.');
+            $('#show-modal').click();
         }
     );
 
@@ -90,7 +92,8 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
             $scope.horarios = response.data.respuesta;
         },
         function error(response) {
-            alert('Se produjo un error al cargar los horarios');
+             $('#error-message').text('Error al cargar los horarios.');
+                $('#show-modal').click();
         }
     );
 
@@ -105,10 +108,11 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
     }).then(
         function success(response) {
             $rootScope.dispositivos = response.data.data;
-           
+
         },
         function error(response) {
-            alert('Error al cargar los dispositivos');
+             $('#error-message').text('Error al cargar los dispositivos.');
+                $('#show-modal').click();
         }
     );
 
@@ -147,8 +151,10 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
                         $scope.product = {};
                     }
                 });
-
-                alert('Sin huellas dactilares, solo se puede agregar un dispositivo');
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-warning');
+                    $('#modal-title').text('Advertencia');
+                    $('#error-message').text('Sin huellas dactilares, solo se puede agregar un dispositivo.');
+                    $('#show-modal').click();
 
             }else if(vacio >=0 && vacio<10){
                 angular.forEach($rootScope.dispositivos, function(value, key){
@@ -180,7 +186,10 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
 
     $scope.guardarEmpleados = function (userInfo) {
         if ($rootScope.tempProduct.length == 0){
-            alert('Debe tener asignado al menos un dispositivo');
+            $('#modal-header').removeClass('alert-danger').addClass('alert-warning');
+                    $('#modal-title').text('Advertencia');
+                    $('#error-message').text('Debe tener asignado al menos un dispositivo.');
+                    $('#show-modal').click();
         }else{
             var dateObj = new Date(userInfo["fechaF"]);
             var month = dateObj.getUTCMonth() + 1; //months from 1-12
@@ -209,7 +218,11 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
             }).then(
                 function success(response) {
                     $scope.carga = true;
-                    alert(''+response.data.respuesta);
+                    $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text(response.data.respuesta);
+                    $('#show-modal').click();
+
                     $scope.crear = false;
                     $scope.empleado = {'fechaF':new Date()};
                     $rootScope.tempProduct = []
@@ -227,7 +240,9 @@ app.controller('empleados', function($scope, $rootScope, $http, $location, $filt
                     loadEmployees();
                 },
                 function error(response) {
-                    alert('Error al crear el administrador.');
+                     $('#error-message').text('Error al crear el usuario.');
+                $('#show-modal').click();
+
                 }
             );
         }

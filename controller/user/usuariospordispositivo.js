@@ -10,7 +10,7 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
         ,Type: $rootScope.Type
     };
 
-  
+
 
     cargarUsuariosPorDispositivo();
     function cargarUsuariosPorDispositivo(){
@@ -29,11 +29,11 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
                 $scope.carga = false;
 
                 $scope.tama = $scope.usuariospordispositivo.length;
-                $scope.currentPage = 0; 
-                $scope.pageSize = 50; 
+                $scope.currentPage = 0;
+                $scope.pageSize = 50;
                 $scope.pages = [];
                 $scope.pages.length = 0;
-                
+
                 var ini = $scope.currentPage - 4;
                 var fin = $scope.currentPage + 5;
                 if (ini < 1) {
@@ -55,18 +55,21 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
                     no: i
                     });
                 }
-        
+
                 if ($scope.currentPage >= $scope.pages.length)
                     $scope.currentPage = $scope.pages.length - 1;
-                
-        
+
+
                 $scope.setPage = function(index) {
                 $scope.currentPage = index - 1;
                 };
             },
             function error(response) {
                 $scope.carga = false;
-                alert(response.data.respuesta);
+
+             $('#error-message').text(response.data.respuesta);
+            $('#show-modal').click();
+
             }
         );
     }
@@ -87,13 +90,16 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
                 $scope.dispositivo = response.data.respuesta;
             },
             function error(response) {
-                alert('Error al cargar los usuarios por dispositivo.');
+
+             $('#error-message').text('Error al cargar los usuarios por dispositivo.');
+            $('#show-modal').click();
+
             }
         );
     }
 
-    $scope.editardispositivo=function(dataForm) {  
-      
+    $scope.editardispositivo=function(dataForm) {
+
 
         $http({
             method: "POST",
@@ -106,10 +112,17 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
             }
         }).then(
             function success(response) {
-                alert(response.data.message);
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text(response.data.message);
+            $('#show-modal').click();
+
             },
             function error(response) {
-                alert(response.data.message);
+
+             $('#error-message').text(response.data.message);
+            $('#show-modal').click();
+
             }
         );
     }
@@ -142,7 +155,7 @@ app.controller('usuariospordispositivo', function($scope, $rootScope, $http, $lo
                 { columnid: 'Active', title: 'Activo' }
             ],
         };
-        
+
 
         $scope.result = $filter('filter')($scope.usuariospordispositivo, $scope.filters.search);
         alasql('SELECT * INTO XLS("Reporte acceso.xls",?) FROM ?', [mystyle, $scope.result]);

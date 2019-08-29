@@ -33,11 +33,11 @@ app.controller('departamentos', function($scope, $rootScope, $http, $location) {
                 $scope.carga = false;
 
                 $scope.tama = $scope.departamentos.length;
-                $scope.currentPage = 0; 
-                $scope.pageSize = 20; 
+                $scope.currentPage = 0;
+                $scope.pageSize = 20;
                 $scope.pages = [];
                 $scope.pages.length = 0;
-                
+
                 var ini = $scope.currentPage - 4;
                 var fin = $scope.currentPage + 5;
                 if (ini < 1) {
@@ -59,25 +59,27 @@ app.controller('departamentos', function($scope, $rootScope, $http, $location) {
                     no: i
                     });
                 }
-        
+
                 if ($scope.currentPage >= $scope.pages.length)
                     $scope.currentPage = $scope.pages.length - 1;
-                
-        
+
+
                 $scope.setPage = function(index) {
                 $scope.currentPage = index - 1;
                 };
             },
             function error(response) {
                 $scope.carga = false;
-                alert('Error al cargar los departamentos');
+                $('#error-message').text('Error al cargar los departamentos.');
+                $('#show-modal').click();
+
             }
         );
     }
 
     $scope.creardepartamento=function(dataForm) {
 
-       
+
 
         $http({
             method: "POST",
@@ -96,7 +98,9 @@ app.controller('departamentos', function($scope, $rootScope, $http, $location) {
                 cargarDepartaments();
             },
             function error(response) {
-                alert('Error al cargar los usuarios por dispositivo.');
+                 $('#error-message').text('Error al cargar los usuarios por dispositivo.');
+                $('#show-modal').click();
+
             }
         );
     }

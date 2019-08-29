@@ -30,7 +30,10 @@ app.controller('parametros', function($scope, $rootScope, $http, $location) {
                 respuesta = response;
             },
             function error(response) {
-                alert('Error al cargar los parametros');
+
+             $('#error-message').text('Error al cargar los parámetros');
+            $('#show-modal').click();
+
             }
         );
     }
@@ -48,11 +51,17 @@ app.controller('parametros', function($scope, $rootScope, $http, $location) {
             }
         }).then(
             function success(response) {
-                alert('Parámetro creado con éxito');
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text('Parámetro creado con éxito.');
+            $('#show-modal').click();
                 cargarParametros();
             },
             function error(response) {
-                alert('Error al crear un nuevo parametro del sistema.');
+
+             $('#error-message').text('Error al crear un nuevo parámetro del sistema.');
+            $('#show-modal').click();
+
             }
         );
     }

@@ -28,7 +28,7 @@
 
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #875A7B;padding-bottom: -10px;">
-    
+
     <!-- Navbar content -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,7 +46,7 @@
             <i class="fa fa-power-off" title="Cerrar Sesión" style="color:red"></i>
         </a>
     </div>
-    
+
 </nav>
 <!-- <a class="navbar-brand titulo" href="#!index">Inicio</a>
 
@@ -81,6 +81,23 @@
     </div>
   </nav>-->
 <div class="contenido" ng-view="">
+</div>
+<a id="show-modal" href="#errorModal" data-toggle="modal" hidden></a>
+
+<div id="errorModal" class="modal fade">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div id="modal-header" class="modal-header alert alert-danger">
+        <h4 id="modal-title">Error</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <p class="text-dark" id="error-message"> </p>
+      </div>
+
+    </div>
+  </div>
 </div>
 <!-- Footer -->
 <footer class="page-footer font-small mdb-color lighten-3 pt-4 ">

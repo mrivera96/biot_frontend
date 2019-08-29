@@ -1,6 +1,6 @@
 app.controller('usuarios', function($scope, $rootScope, $http, $location) {
     $rootScope.token = '<?php echo $_SESSION["token"];?>'
-    
+
     $scope.carga = true;
     $scope.filters = {};
     $scope.filters.search = "";
@@ -41,13 +41,16 @@ app.controller('usuarios', function($scope, $rootScope, $http, $location) {
         },
         function error(response) {
             $scope.carga = false;
-            alert(response.data.respuesta);
+
+             $('#error-message').text(response.data.respuesta);
+            $('#show-modal').click();
+
         }
     );
 
     $scope.verDetail = function (idUser) {
         $rootScope.idUser = idUser;
-        
+
         $location.path('permisosusuarios');
     }
 
@@ -55,7 +58,7 @@ app.controller('usuarios', function($scope, $rootScope, $http, $location) {
 
         dataForm.rol = 2;
 
-      
+
 
         $http({
             method: "POST",
@@ -72,7 +75,7 @@ app.controller('usuarios', function($scope, $rootScope, $http, $location) {
             },
             function error(response) {
                 if (response.data.fatalerror) {
-                    alert(response.data.fatalerror);    
+                    alert(response.data.fatalerror);
                 }else
                     alert('Error al crear el usuario.');
             }
@@ -87,7 +90,7 @@ $scope.crearUsuario=function(){
     $scope.crearadmin=function(dataForm) {
 
         dataForm.rol = 1;
-   
+
 
         $http({
             method: "POST",
@@ -100,13 +103,23 @@ $scope.crearUsuario=function(){
             }
         }).then(
             function success(response) {
-                alert('Usuario creado con éxito.');
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text('Usuario creado con éxito.');
+            $('#show-modal').click();
+
             },
             function error(response) {
                 if (response.data.fatalerror) {
-                    alert(response.data.fatalerror);    
+
+            $('#modal-title').text('¡Error Fatal!');
+             $('#error-message').text(response.data.fatalerror);
+            $('#show-modal').click();
+
                 }else
-                    alert('Error al crear el usuario.');
+
+             $('#error-message').text('Error al crear el usuario.');
+            $('#show-modal').click();
             }
         );
     }

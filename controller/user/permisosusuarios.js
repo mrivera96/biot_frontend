@@ -9,7 +9,7 @@ app.controller('permisosusuarios', function ($scope, $rootScope, $http, $locatio
     $scope.tempDevArray = [];
     $scope.tempDeptArray = [];
     $scope.newDev = {};
-    
+
 loadData();
     function loadData(){
         $http({
@@ -37,13 +37,15 @@ loadData();
                 $scope.cargar=false;
             },
             function error(response) {
-    
-                alert("Error al consultar los datos del usuario.");
-    
+
+             $('#error-message').text('Error al consultar los datos del usuario.');
+            $('#show-modal').click();
+
+
             }
         );
     }
-    
+
 
     function doorlist() {
         $http({
@@ -63,7 +65,10 @@ loadData();
                 $scope.currUsr.devices = response.data.puertas;
             },
             function error(response) {
-                alert('Error al cargar los dispositivos');
+
+             $('#error-message').text('Error al cargar los dispositivos.');
+            $('#show-modal').click();
+
             }
         );
     };
@@ -80,11 +85,14 @@ loadData();
     }).then(
         function success(response) {
             $scope.departamentos = response.data.respuesta;
-            
+
         },
         function error(response) {
-            alert('Error al cargar los departamentos');
-            
+
+             $('#error-message').text('Error al cargar los departamentos.');
+            $('#show-modal').click();
+
+
         }
     );
 
@@ -94,7 +102,7 @@ loadData();
             method: "POST",
             url: $rootScope.ipServer + "/public/api/verdepartments",
             data: $.param({
-                'id_user': $scope.currUsr.id               
+                'id_user': $scope.currUsr.id
             }),
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
@@ -112,14 +120,17 @@ loadData();
                                 Description:value.Description
                             };
                             $scope.currUsr.departments.push(newDepto);
-                            
+
                         }
                     });
                 });
-               
+
             },
             function error(response) {
-                alert('Error al cargar los departamentos del usuario');
+
+             $('#error-message').text('Error al cargar los departamentos del usuario.');
+            $('#show-modal').click();
+
             }
         );
     };
@@ -138,7 +149,10 @@ loadData();
 
         },
         function error(response) {
-            alert('Error al cargar los dispositivos');
+
+             $('#error-message').text('Error al cargar los dispositivos.');
+            $('#show-modal').click();
+
         }
     );
 
@@ -196,11 +210,19 @@ loadData();
                 $scope.tempDevArray.push($scope.newDev);
                 $scope.newDev = {};
             } else {
-                alert('Ya tiene asignado este dispositivo')
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+             $('#error-message').text('Ya tiene asignado este dispositivo.');
+            $('#show-modal').click();
+
             }
 
         } else {
-            alert('Este dispositivo ya esta agregado a la lista')
+            $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+             $('#error-message').text('Este dispositivo ya está agregado a la lista.');
+            $('#show-modal').click();
+
         }
     };
 
@@ -239,11 +261,19 @@ loadData();
                 $scope.tempDeptArray.push($scope.newDept);
                 $scope.newDept = {};
             } else {
-                alert('Ya tiene asignado este departamento')
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+             $('#error-message').text('Ya tiene asignado este departamento.');
+            $('#show-modal').click();
+
             }
 
         } else {
-            alert('Este departamento ya esta agregado a la lista')
+             $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+             $('#error-message').text('Este departamento ya está agregado a la lista.');
+            $('#show-modal').click();
+
         }
     };
 
@@ -269,12 +299,18 @@ loadData();
                 }
             }).then(
                 function success(response) {
-                    alert('Departamento eliminado correctamente');
+                     $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text('Departamento eliminado correctamente.');
+            $('#show-modal').click();
+
                     loadData();
                 },
                 function error(response) {
 
-                    alert('Error al eliminar el departamento');
+             $('#error-message').text('Error al eliminar el departamento.');
+            $('#show-modal').click();
+
 
                 }
             );
@@ -301,12 +337,19 @@ loadData();
                 }
             }).then(
                 function success(response) {
-                    alert('Dispositivo eliminado correctamente');
+                     $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text('Dispositivo eliminado correctamente.');
+            $('#show-modal').click();
+
                     loadData();
                 },
                 function error(response) {
 
-                    alert('Error al eliminar el dispositivo');
+             $('#error-message').text('Error al eliminar el dispositivo.');
+            $('#show-modal').click();
+
+
 
                 }
             );
@@ -342,7 +385,8 @@ loadData();
         },
         function error(response) {
 
-            alert(response.data);
+             $('#error-message').text(response.data);
+            $('#show-modal').click();
         }
     );
 
@@ -362,13 +406,20 @@ loadData();
             }
         }).then(
             function success(response) {
-                alert('Usuario actualizado con éxito.');
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text('Usuario actualizado con éxito.');
+            $('#show-modal').click();
+
                 $scope.tempDevArray=[];
                 $scope.tempDeptArray=[];
                 loadData();
             },
             function error(response) {
-                alert('Error al modificar el usuario.');
+
+             $('#error-message').text('Error al modificar el usuario.');
+            $('#show-modal').click();
+
                 $scope.cargar = false;
             }
         );
@@ -394,19 +445,26 @@ loadData();
         }).then(
             function success(response) {
                 $scope.cargar = false;
-                alert(response.data);
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+             $('#error-message').text(response.data);
+            $('#show-modal').click();
+
                 window.location.href = "";
 
 
             },
             function error(response) {
                 $scope.cargar = false;
-                alert(response.data);
+
+             $('#error-message').text(response.data);
+            $('#show-modal').click();
+
             }
         );
 
 
     };
-    
+
 
 });

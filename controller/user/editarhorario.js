@@ -54,13 +54,14 @@ app.controller('editarhorario', function($scope, $rootScope, $http, $location) {
                 document.getElementById("SalidaL").value = salidaHr +":"+ salidaMr;
             },
             function error(response) {
-                alert('Error al cargar el horario seleccionado.');
+                $('#error-message').text('Error al cargar el horario seleccionado.');
+                $('#show-modal').click();
             }
         );
     }
 
 
-    $scope.editarnombrehorario=function(dataForm) {  
+    $scope.editarnombrehorario=function(dataForm) {
 
         $http({
             method: "POST",
@@ -73,11 +74,16 @@ app.controller('editarhorario', function($scope, $rootScope, $http, $location) {
             }
         }).then(
             function success(response) {
-                alert('Nombre del horario editado con éxito.');
+                $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text('Nombre del horario editado con éxito.');
+                    $('#show-modal').click();
                 cargarHorario();
             },
             function error(response) {
-                alert('Error al cargar los usuarios por dispositivo.');
+                $('#error-message').text('Error al editar el horario.');
+                $('#show-modal').click();
+
             }
         );
     }
@@ -105,7 +111,7 @@ app.controller('editarhorario', function($scope, $rootScope, $http, $location) {
             entradas = document.getElementById("EntradaS").value;
             salidas = document.getElementById("SalidaS").value;
 
-            
+
 
             var horaEntradaL, horaEntradaM, horaEntradaMi, horaEntradaJ, horaEntradaV, horaEntradaS;
             /*LUNES*/
@@ -175,7 +181,7 @@ app.controller('editarhorario', function($scope, $rootScope, $http, $location) {
                 T2OutHour: [salidal.substring(0, 2)],
                 T2OutMinute: [salidal.substring(3, 5)]
             };
-         
+
             peticionEditarHorarioDetalle(paramForm);
         }
     }
@@ -192,11 +198,15 @@ app.controller('editarhorario', function($scope, $rootScope, $http, $location) {
             }
         }).then(
             function success(response) {
-                alert('Horario actualizado con éxito.');
+                 $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text('Horario actualizado con éxito.');
+                    $('#show-modal').click();
                 cargarHorario();
             },
             function error(response) {
-                alert('Error al actualizar el tiempo de horario.');
+                $('#error-message').text('Error al actualizar el horario.');
+                $('#show-modal').click();
             }
         );
     }

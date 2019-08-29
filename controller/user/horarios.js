@@ -6,7 +6,7 @@ app.controller('horarios', function($scope, $rootScope, $http, $location) {
     $scope.filters = {};
     $scope.filters.search = "";
     $scope.formato = false;
-    
+
     $scope.mostrar = function() {
         $scope.formato = true;
     }
@@ -105,7 +105,7 @@ app.controller('horarios', function($scope, $rootScope, $http, $location) {
                 T2OutHour: [salidal.substring(0, 2)],
                 T2OutMinute: [entradal.substring(3, 5)]
             };
-         
+
             peticionCrearHorarioDetalle(paramForm);
         }
     }
@@ -132,7 +132,10 @@ app.controller('horarios', function($scope, $rootScope, $http, $location) {
             },
             function error(response) {
                 $scope.carga = false;
-                alert('Error al cargar los horarios');
+
+             $('#error-message').text('Error al cargar los horarios.');
+            $('#show-modal').click();
+
             }
         );
     }
@@ -152,7 +155,10 @@ app.controller('horarios', function($scope, $rootScope, $http, $location) {
                 cargarHorarios();
             },
             function error(response) {
-                alert('Error al cargar los usuarios por dispositivo.');
+
+             $('#error-message').text('Error al cargar los usuarios por dispositivo.');
+            $('#show-modal').click();
+
             }
         );
     }

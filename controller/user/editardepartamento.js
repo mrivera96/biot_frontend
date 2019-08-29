@@ -26,7 +26,8 @@ app.controller('editardepartamento', function($scope, $rootScope, $http, $locati
                 $scope.padres = response.data.padres;
             },
             function error(response) {
-                alert('Error al cargar el departamento seleccionado.');
+                $('#error-message').text('Error al cargar el departamento seleccionado.');
+                $('#show-modal').click();
             }
         );
     }
@@ -43,10 +44,16 @@ app.controller('editardepartamento', function($scope, $rootScope, $http, $locati
             }
         }).then(
             function success(response) {
-                alert('Departamento actualizado con éxito.');
+                $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text('Departamento actualizado con éxito.');
+                    $('#show-modal').click();
+
             },
             function error(response) {
-                alert(response.data.message);
+                $('#error-message').text(response.data.message);
+                $('#show-modal').click();
+
             }
         );
     }
@@ -72,11 +79,11 @@ app.controller('editardepartamento', function($scope, $rootScope, $http, $locati
             $scope.empleados = response.data.respuesta;
 
             $scope.tama = $scope.empleados.length;
-            $scope.currentPage = 0; 
-            $scope.pageSize = 50; 
+            $scope.currentPage = 0;
+            $scope.pageSize = 50;
             $scope.pages = [];
             $scope.pages.length = 0;
-            
+
             var ini = $scope.currentPage - 4;
             var fin = $scope.currentPage + 5;
             if (ini < 1) {
@@ -98,17 +105,18 @@ app.controller('editardepartamento', function($scope, $rootScope, $http, $locati
                 no: i
                 });
             }
-    
+
             if ($scope.currentPage >= $scope.pages.length)
                 $scope.currentPage = $scope.pages.length - 1;
-            
-    
+
+
             $scope.setPage = function(index) {
             $scope.currentPage = index - 1;
             };
         },
         function error(response) {
-            alert(response.data.message);
+            $('#error-message').text(response.data.message);
+                $('#show-modal').click();
         }
     );
 });

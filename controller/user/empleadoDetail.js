@@ -69,12 +69,15 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 }
             }).then(
                 function success(response) {
-                    alert('Dispositivo eliminado correctamente');
+                    $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text('Dispositivo eliminado correctamente.');
+                    $('#show-modal').click();
                     deviceList();
                 },
                 function error(response) {
-
-                    alert('Error al eliminar el dispositivo');
+                $('#error-message').text('Error al eliminar el dispositivo.');
+                $('#show-modal').click();
 
                 }
             );
@@ -96,7 +99,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             $scope.departments = response.data.respuesta;
         },
         function error(response) {
-            alert('Se produjo un error al cargar los departamentos');
+            $('#error-message').text('Se produjo un error al cargar los departamentos.');
+            $('#show-modal').click();
+
         }
     );
 
@@ -113,7 +118,8 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             $scope.horarios = response.data.respuesta;
         },
         function error(response) {
-            alert('Se produjo un error al cargar los horarios');
+            $('#error-message').text('Se produjo un error al cargar los horarios.');
+            $('#show-modal').click();
         }
     );
 
@@ -142,7 +148,8 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             horario = e.UseShift;
         },
         function error(response) {
-            alert('Error al cargar los empleados');
+            $('#error-message').text('Error al cargar los empleados.');
+            $('#show-modal').click();
         }
     );
 
@@ -167,7 +174,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             },
             function error(response) {
                 $scope.carga2 = false;
-                alert(response.data.respuesta);
+                 $('#error-message').text(response.data.respuesta);
+            $('#show-modal').click();
+
 
             }
         );
@@ -193,12 +202,17 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
 
         if (conta == 0) {
             if(!Array.isArray($rootScope.tieneHuellas) && $scope.deviceList != 0){
+            $('#modal-header').removeClass('alert-danger').addClass('alert-warning');
+            $('#modal-title').text('Advertencia');
+             $('#error-message').text('Sin huellas dactilares, no puede agregar otro dispositivo');
+            $('#show-modal').click();
 
-                alert('Sin huellas dactilares, no puede agregar otro dispositivo');
 
             }else if(!Array.isArray($rootScope.tieneHuellas) && $rootScope.tempProduct != 0){
-
-                alert('Sin huellas dactilares, no puede agregar otro dispositivo');
+                $('#modal-header').removeClass('alert-danger').addClass('alert-warning');
+                $('#modal-title').text('Advertencia');
+                $('#error-message').text('Sin huellas dactilares, no puede agregar otro dispositivo');
+                $('#show-modal').click();
 
             }else if  (!Array.isArray($rootScope.tieneHuellas) && $scope.deviceList == 0){
 
@@ -247,7 +261,11 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                     });
 
                 } else {
-                    alert('Ya tiene asignado este dispositivo')
+                   $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+            $('#error-message').text('Ya tiene asignado este dispositivo.');
+            $('#show-modal').click();
+
                 }
             }else if(Array.isArray($rootScope.tieneHuellas) && $scope.deviceList == 0){
                 if (conta2 == 0){
@@ -274,7 +292,11 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             }
 
         }else {
-            alert('Este dispositivo ya esta agregado a la lista')
+            $('#modal-header').removeClass('alert-danger').addClass('alert-info');
+            $('#modal-title').text('¡Atención!');
+            $('#error-message').text('Este dispositivo ya está agregado a la lista.');
+            $('#show-modal').click();
+
         }
 
     };
@@ -324,7 +346,10 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
                 $scope.carga = true;
                 $scope.carga3 = false;
 
-                alert(''+response.data.respuesta);
+            $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+            $('#modal-title').text('¡Éxito!');
+            $('#error-message').text(response.data.respuesta);
+            $('#show-modal').click();
                 $rootScope.tempProduct = [];
                 $rootScope.fingers = [
                     "",
@@ -341,8 +366,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             },
             function error(response) {
                 $scope.carga3 = false;
+                $('#error-message').text('Error al modificar el usuario.');
+                $('#show-modal').click();
 
-                alert('Error al modificar el usuario');
             }
         );
         //}
@@ -462,7 +488,9 @@ app.controller('empleadoDetail', function($scope, $rootScope, $http, $location, 
             function error(response) {
                 $scope.carga = false;
 
-                alert('Se produjo un error');
+            $('#error-message').text('Ocurrió un error al cargar el reporte de asistencia.');
+            $('#show-modal').click();
+
             }
         );
     };

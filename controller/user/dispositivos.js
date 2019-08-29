@@ -1,7 +1,7 @@
 app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
     $rootScope.token = '<?php echo $_SESSION["token"];?>';
 
-    
+
     $scope.carga = true;
     $scope.filters = {};
     $scope.filters.search = "";
@@ -24,11 +24,11 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
         }else{
            $rootScope.Type= "bioface";
         }
-        
-        $location.path('usuariospordispositivo');      
+
+        $location.path('usuariospordispositivo');
     }
 
-    
+
     $scope.openDoor=function openDoor(Type, IP){
         $scope.carga = true;
         if(Type=="11"){
@@ -45,12 +45,16 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
                 'Authorization':'Bearer '+$rootScope.token
             }
         }).then(
-            function success(response) {  
-               alert('Puerta Abierta');
+            function success(response) {
+                $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text('Puerta Abierta.');
+                    $('#show-modal').click();
                $scope.carga = false;
             },
             function error(response) {
-                alert('Error al abrir la puerta. \nIntente de nuevo')
+                $('#error-message').text('Error al abrir la puerta. \nIntente de nuevo.');
+                $('#show-modal').click();
                 $scope.carga = false;
             }
         );
@@ -70,15 +74,15 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
         }).then(
             function success(response) {
                 $scope.dispositivos = response.data.data;
-               
+
                 $scope.carga = false;
 
                 $scope.tama = $scope.dispositivos.length;
-                $scope.currentPage = 0; 
-                $scope.pageSize = 20; 
+                $scope.currentPage = 0;
+                $scope.pageSize = 20;
                 $scope.pages = [];
                 $scope.pages.length = 0;
-                
+
                 var ini = $scope.currentPage - 4;
                 var fin = $scope.currentPage + 5;
                 if (ini < 1) {
@@ -100,19 +104,20 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
                     no: i
                     });
                 }
-        
+
                 if ($scope.currentPage >= $scope.pages.length)
                     $scope.currentPage = $scope.pages.length - 1;
-                
-        
+
+
                 $scope.setPage = function(index) {
                 $scope.currentPage = index - 1;
                 };
-                
+
             },
             function error(response) {
                 $scope.carga = false;
-                alert('Error al cargar los dispositivos');
+                $('#error-message').text('Error al cargar los dispositivos.');
+                $('#show-modal').click();
             }
         );
     }
@@ -130,13 +135,17 @@ app.controller('dispositivos', function($scope, $rootScope, $http, $location) {
             }
         }).then(
             function success(response) {
-				alert("Dispositivo agregado con éxito");
-				document.getElementById("upload").reset();	
+                $('#modal-header').removeClass('alert-danger').addClass('alert-success');
+                    $('#modal-title').text('¡Éxito!');
+                    $('#error-message').text("Dispositivo agregado con éxito");
+                    $('#show-modal').click();
+				document.getElementById("upload").reset();
                 cargarDispositivo();
             },
             function error(response) {
-                alert(response.data.message);
-				document.getElementById("upload").reset();	
+                $('#error-message').text(response.data.message);
+                $('#show-modal').click();
+				document.getElementById("upload").reset();
             }
         );
     }

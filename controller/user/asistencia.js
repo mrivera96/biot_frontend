@@ -30,13 +30,17 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
             $scope.departments = response.data.respuesta;
         },
         function error(response) {
-            alert('Se produjo un error');
+            $('#error-message').text('Se produjo un error al cargar los departamentos');
+            $('#show-modal').click();
+
         }
     );
-    
+
     $scope.mostrar = function(paramAsisten) {
         if((paramAsisten['IdDepartment']==null && $rootScope.IdUsr!=1) || ($rootScope.IdUsr!=1 && paramAsisten['IdDepartment']=="")){
-            alert('Seleccione un departamento');
+            //alert('Seleccione un departamento');
+            $('#error-message').text('Debe seleccionar un departamento.');
+            $('#show-modal').click();
         }else{
             $scope.carga = true;
             $scope.ver = true;
@@ -46,28 +50,28 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
             var day = dateObj.getUTCDate();
             var year = dateObj.getUTCFullYear();
             var numDia = dateObj.getUTCDay();
-    
+
             var dateObj1 = new Date(paramAsisten["fechaI"]);
             var month1 = dateObj1.getUTCMonth() + 1; //months from 1-12
             var day1 = dateObj1.getUTCDate();
             var year1 = dateObj1.getUTCFullYear();
             var numDia1 = dateObj1.getUTCDay();
-    
+
             mostrar = year + "-" + month + "-" + day;
             mostrar1 = year1 + "-" + month1 + "-" + day1;
-    
+
             //paramAsisten['fechaF'] = new Date(mostrar);
             //paramAsisten['fechaI'] = new Date(mostrar1);
             if (paramAsisten['tipo']) {
                 paramAsisten['fecha'] = mostrar1 + "," + mostrar;
-    
+
             } else {
                 paramAsisten['fecha'] = mostrar;
             }
-    
+
             fecha = paramAsisten['fecha'];
             paramAsisten['DayId'] = numDia - 1;
-    
+
             if (paramAsisten['DayId'] >= 0 && paramAsisten['DayId'] < 5) {
                 $http({
                     method: "POST",
@@ -97,20 +101,25 @@ app.controller('asistencia', function($scope, $rootScope, $http, $location, $fil
                             $rootScope.pagination($rootScope.reporte.length, 50);
                             $scope.carga = false;
                         }
-                        
+
                         $scope.carga = false;
+
                     },
                     function error(response) {
-                        alert('Se produjo un error.');
+                        $('#error-message').text('Se produjo un error al cargar el reporte. Por favor intente de nuevo.');
+                        $('#show-modal').click();
+                        //alert('Se produjo un error.');
                     }
                 );
-    
+
             } else {
-                alert('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos.');
+                 $('#error-message').text('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos.');
+                $('#show-modal').click();
+                //alert('Lo sentimos, el día que está solicitando no es parte de los horarios de contratos.');
                 $scope.carga = false;
             }
         }
-        
+
     };
 
     $scope.filterData = function(data) {

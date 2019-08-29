@@ -30,7 +30,7 @@
                     <div class="form-texto-animado" style="margin-bottom: 15px
                         !important">
                         <select  class="input-text" name="IdDepartment" ng-model="asistencia.IdDepartment">
-                    
+
                             <option value="">Seleccione un departamento</option>
                             <option ng-repeat="d in departments"
                                  value="{{d.IdDepartment}}" >{{d.Description}}
@@ -152,7 +152,7 @@
                                     <td>{{ r.horastrabajadas}}</td>
                                     <td>{{r.horasrealestrabajadas}}</td>
                                     <td>{{ r.salioantes }}</td>
-                                    <td>{{r.extras}}</td> 
+                                    <td>{{r.extras}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -164,10 +164,13 @@
                             reporte.length/pageSize - 1' , ng-click='currentPage
                             = currentPage + 1'>&raquo;</button>
 
-                        <h3 ng-show="!reporte.length && !carga">No hay registros</h3>
+
                     </div>
+
                 </div>
+
             </div>
+            <h3 ng-show="!reporte.length && !carga">No hay registros</h3>
         </div>
 
     </div>
