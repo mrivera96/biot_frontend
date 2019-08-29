@@ -131,8 +131,8 @@
                                 <tr ng-repeat="r in reporte |
                                     filter:filters.search | startFromGrid:
                                     currentPage * pageSize | limitTo: pageSize|
-                                    orderBy : '+nombre'" ng-style="r.asis === 'SÍ' &&
-                                    {'background-color': 'red'}">
+                                    orderBy : '+nombre'"  ng-style="r.fecha_y_hora_marco_min ==
+                                        r.fecha_y_hora_marco_max && {'background-color':'#ffae42'} || r.asis=='SÍ' && {'background-color':'red'}">
                                     <td>{{$index + 1}}</td>
                                     <td style="padding-left:85px;">{{ r.nombre }}
                                     </td>

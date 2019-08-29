@@ -339,7 +339,8 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="r in reporteporusuario | filter:filters.search  | orderBy:'+formedDate' |startFromGrid: currentPage * pageSize | limitTo: pageSize"
-                                    ng-style="r.asis === 'SÍ' && {'background-color': 'red'}">
+                                    ng-style="r.fecha_y_hora_marco_min ==
+                                                                            r.fecha_y_hora_marco_max && {'background-color':'#ffae42'} || r.asis=='SÍ' && {'background-color':'red'}">
                                     <td>{{$index + 1}}</td>
                                     <td style="padding-left:85px;">{{ r.nombre }}</td>
                                     <td style="padding-left:85px;">{{ r.departamento }}</td>
